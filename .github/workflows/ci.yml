@@ -50,4 +50,4 @@ jobs:
           PYTHONPATH=$GITHUB_WORKSPACE pytest tests/ -v
 
       - name: Build Docker image
-        run: docker build -t ml_model_serving_api:latest ./deployment/docker
+        run: docker build -t ml_model_serving_api:latest -f ./deployment/docker/Dockerfile .
