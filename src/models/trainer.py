@@ -23,8 +23,14 @@ class HousingModelTrainer:
 
     def _create_model(self):
         if self.model_type == "random_forest":
-            defaults = {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5,
-                       'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}
+            defaults = {
+                "n_estimators": 100,
+                "max_depth": 15,
+                "min_samples_split": 5,
+                "min_samples_leaf": 2,
+                "random_state": 42,
+                "n_jobs": -1,
+            }
             defaults.update(self.model_params)
             return RandomForestRegressor(**defaults)
         elif self.model_type == "linear_regression":
@@ -60,7 +66,7 @@ class HousingModelTrainer:
             "mse": round(mse, 4),
             "rmse": round(rmse, 4),
             "mae": round(mae, 4),
-            "r2_score": round(r2, 4)
+            "r2_score": round(r2, 4),
         }
 
     def save_model(self, model_path: str) -> None:

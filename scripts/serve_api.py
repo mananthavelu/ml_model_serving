@@ -6,7 +6,7 @@ Runs the FastAPI server for model inference.
 import logging
 import uvicorn
 
-from src.utils import setup_logging, get_logger
+from src.utils import setup_logging
 
 # Setup logging
 setup_logging("INFO")
@@ -25,5 +25,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8000,
         reload=False,  # Auto-reload on code changes (development only)
-        log_level="info"
+        log_level="info",
     )

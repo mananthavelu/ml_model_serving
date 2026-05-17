@@ -12,11 +12,22 @@ class HousingPreprocessor:
 
     def __init__(self, scaling: str = "standard"):
         self.scaling = scaling
-        self.scaler = {"standard": StandardScaler, "minmax": MinMaxScaler,
-                      "robust": RobustScaler}.get(scaling, StandardScaler)()
-        self.numerical_features = ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms',
-                                   'Population', 'AveOccup', 'Latitude', 'Longitude']
-        self.target_column = 'Price'
+        self.scaler = {
+            "standard": StandardScaler,
+            "minmax": MinMaxScaler,
+            "robust": RobustScaler,
+        }.get(scaling, StandardScaler)()
+        self.numerical_features = [
+            "MedInc",
+            "HouseAge",
+            "AveRooms",
+            "AveBedrms",
+            "Population",
+            "AveOccup",
+            "Latitude",
+            "Longitude",
+        ]
+        self.target_column = "Price"
 
     def handle_missing_values(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
@@ -25,7 +36,9 @@ class HousingPreprocessor:
                 df[col] = df[col].fillna(df[col].median())
         return df
 
-    def remove_outliers(self, df: pd.DataFrame, iqr_multiplier: float = 1.5) -> pd.DataFrame:
+    def remove_outliers(
+        self, df: pd.DataFrame, iqr_multiplier: float = 1.5
+    ) -> pd.DataFrame:
         df = df.copy()
         for col in self.numerical_features:
             if col in df.columns:
@@ -39,7 +52,11 @@ class HousingPreprocessor:
     def scale_features(self, X: pd.DataFrame, fit: bool = False) -> pd.DataFrame:
         X = X.copy()
         cols = [col for col in self.numerical_features if col in X.columns]
-        X[cols] = self.scaler.fit_transform(X[cols]) if fit else self.scaler.transform(X[cols])
+        X[cols] = (
+            self.scaler.fit_transform(X[cols])
+            if fit
+            else self.scaler.transform(X[cols])
+        )
         return X
 
     def preprocess(self, df: pd.DataFrame, fit: bool = False) -> pd.DataFrame:

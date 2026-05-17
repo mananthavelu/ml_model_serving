@@ -30,14 +30,15 @@ def run_command(command: str, description: str) -> bool:
     logger.info(f"Command: {command}")
 
     try:
-        result = subprocess.run(
+        subprocess.run(
             command,
             shell=True,
             check=True,
             capture_output=True,
             text=True,
-            cwd=Path(__file__).parent.parent
+            cwd=Path(__file__).parent.parent,
         )
+        logger.info(f"Successfully completed: {description}")
         logger.info(f"✓ {description} completed successfully")
         return True
     except subprocess.CalledProcessError as e:
@@ -58,40 +59,36 @@ def run_full_pipeline():
     3. Train model
     4. Test API
     """
-    logger.info("="*80)
+    logger.info("=" * 80)
     logger.info("STARTING COMPLETE MLOPS PIPELINE")
-    logger.info("="*80)
+    logger.info("=" * 80)
 
     steps = [
         # Step 1: Generate sample data
         {
             "command": "python -m scripts.generate_sample_data",
-            "description": "Generate sample housing dataset"
+            "description": "Generate sample housing dataset",
         },
-
         # Step 2: Process data
         {
             "command": "python -m scripts.process_data",
-            "description": "Process and validate data pipeline"
+            "description": "Process and validate data pipeline",
         },
-
         # Step 3: Train model
         {
             "command": "python -m scripts.train_model",
-            "description": "Train housing prices prediction model"
+            "description": "Train housing prices prediction model",
         },
-
         # Step 4: Evaluate model
         {
             "command": "python -m scripts.evaluate_model",
-            "description": "Evaluate trained model on test data"
+            "description": "Evaluate trained model on test data",
         },
-
         # Step 5: Test API startup (background)
         {
             "command": "timeout 10 python -m scripts.serve_api || echo 'API startup test completed'",
-            "description": "Test API server startup"
-        }
+            "description": "Test API server startup",
+        },
     ]
 
     success_count = 0
@@ -102,13 +99,13 @@ def run_full_pipeline():
             logger.error(f"Pipeline failed at step: {step['description']}")
             break
 
-    logger.info("="*80)
+    logger.info("=" * 80)
     if success_count == len(steps):
         logger.info("✓ COMPLETE MLOPS PIPELINE SUCCESSFUL!")
         logger.info("Ready for production deployment")
     else:
         logger.error(f"✗ PIPELINE FAILED: {success_count}/{len(steps)} steps completed")
-    logger.info("="*80)
+    logger.info("=" * 80)
 
     return success_count == len(steps)
 

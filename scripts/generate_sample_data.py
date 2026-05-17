@@ -9,25 +9,34 @@ setup_logging()
 logger = get_logger(__name__)
 
 
-def generate_housing_data(n_samples: int = 1000, random_state: int = 42) -> pd.DataFrame:
+def generate_housing_data(
+    n_samples: int = 1000, random_state: int = 42
+) -> pd.DataFrame:
     """Generate synthetic housing prices dataset."""
     np.random.seed(random_state)
     data = {
-        'MedInc': np.random.lognormal(mean=1.5, sigma=0.8, size=n_samples),
-        'HouseAge': np.random.gamma(shape=2, scale=12, size=n_samples) + 1,
-        'AveRooms': np.random.gamma(shape=2, scale=3, size=n_samples) + 1,
-        'AveBedrms': np.random.gamma(shape=2, scale=1.5, size=n_samples) + 1,
-        'Population': np.random.lognormal(mean=5, sigma=1.5, size=n_samples),
-        'AveOccup': np.random.gamma(shape=2, scale=2, size=n_samples) + 1,
-        'Latitude': np.random.uniform(32, 42, n_samples),
-        'Longitude': np.random.uniform(-125, -114, n_samples),
+        "MedInc": np.random.lognormal(mean=1.5, sigma=0.8, size=n_samples),
+        "HouseAge": np.random.gamma(shape=2, scale=12, size=n_samples) + 1,
+        "AveRooms": np.random.gamma(shape=2, scale=3, size=n_samples) + 1,
+        "AveBedrms": np.random.gamma(shape=2, scale=1.5, size=n_samples) + 1,
+        "Population": np.random.lognormal(mean=5, sigma=1.5, size=n_samples),
+        "AveOccup": np.random.gamma(shape=2, scale=2, size=n_samples) + 1,
+        "Latitude": np.random.uniform(32, 42, n_samples),
+        "Longitude": np.random.uniform(-125, -114, n_samples),
     }
     df = pd.DataFrame(data)
-    price = (0.4 * df['MedInc'] + 0.01 * np.maximum(52 - df['HouseAge'], 0) +
-             0.05 * df['AveRooms'] + 0.005 * (40 - df['Latitude']) +
-             0.01 * (-115 - df['Longitude']) + np.random.normal(0, 0.3, n_samples))
-    df['Price'] = np.clip(price, 0.5, 5.0)
-    logger.info(f"Generated {df.shape[0]} samples. Price range: ${df['Price'].min():.2f}k - ${df['Price'].max():.2f}k")
+    price = (
+        0.4 * df["MedInc"]
+        + 0.01 * np.maximum(52 - df["HouseAge"], 0)
+        + 0.05 * df["AveRooms"]
+        + 0.005 * (40 - df["Latitude"])
+        + 0.01 * (-115 - df["Longitude"])
+        + np.random.normal(0, 0.3, n_samples)
+    )
+    df["Price"] = np.clip(price, 0.5, 5.0)
+    logger.info(
+        f"Generated {df.shape[0]} samples. Price range: ${df['Price'].min():.2f}k - ${df['Price'].max():.2f}k"
+    )
     return df
 
 

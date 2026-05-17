@@ -3,7 +3,7 @@
 import joblib
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any
+from typing import List, Dict
 import mlflow
 from mlflow.tracking import MlflowClient
 
@@ -19,24 +19,32 @@ PREPROCESSOR_PATH = "models/artifacts/preprocessor.pkl"
 
 # Configure MLflow client
 client = MlflowClient()
-MODEL_NAME = config['model']['registry'].get('model_name', "HousingPricePredictor")
-MODEL_STAGE = config['model']['registry'].get('model_stage', "Production")
+MODEL_NAME = config["model"]["registry"].get("model_name", "HousingPricePredictor")
+MODEL_STAGE = config["model"]["registry"].get("model_stage", "Production")
 
 try:
     # Load preprocessor
     preprocessor = joblib.load(PREPROCESSOR_PATH)
 except Exception:
-    logger.warning(f"Preprocessor not found at {PREPROCESSOR_PATH}. Initializing default preprocessor.")
-    preprocessor = HousingPreprocessor(scaling=config['features'].get('scaling', 'standard'))
+    logger.warning(
+        f"Preprocessor not found at {PREPROCESSOR_PATH}. Initializing default preprocessor."
+    )
+    preprocessor = HousingPreprocessor(
+        scaling=config["features"].get("scaling", "standard")
+    )
 
 try:
     # Load model from MLflow Model Registry
     model_uri = f"models:/{MODEL_NAME}/{MODEL_STAGE}"
     predictor = mlflow.pyfunc.load_model(model_uri)
-    logger.info(f"Successfully loaded model '{MODEL_NAME}' in stage '{MODEL_STAGE}' from MLflow Registry.")
+    logger.info(
+        f"Successfully loaded model '{MODEL_NAME}' in stage '{MODEL_STAGE}' from MLflow Registry."
+    )
 except Exception as e:
     logger.error(f"Failed to load model from MLflow Registry: {e}")
-    logger.error("Ensure an MLflow tracking server is running and the model is registered.")
+    logger.error(
+        "Ensure an MLflow tracking server is running and the model is registered."
+    )
     predictor = None
     # Fallback to local model if MLflow fails (optional, for dev)
     try:
@@ -107,7 +115,9 @@ async def predict_batch(request: BatchPredictionRequest):
         raise HTTPException(status_code=503, detail="Model not available")
     try:
         result = predictor.predict([h.dict() for h in request.houses])
-        return BatchPredictionResponse(predictions=result["predictions"], count=result["count"])
+        return BatchPredictionResponse(
+            predictions=result["predictions"], count=result["count"]
+        )
     except Exception as e:
         logger.error(f"Batch prediction failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -123,9 +133,6 @@ async def model_info():
         "preprocessor_config": {
             "scaling": preprocessor.scaling,
             "numerical_features": preprocessor.numerical_features,
-            "target_column": preprocessor.target_column
-        }
+            "target_column": preprocessor.target_column,
+        },
     }
-
-
-

@@ -11,8 +11,17 @@ class HousingDataValidator:
 
     def validate(self, df: pd.DataFrame) -> dict:
         """Validate housing dataset against expectations."""
-        required_cols = ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population',
-                        'AveOccup', 'Latitude', 'Longitude', 'Price']
+        required_cols = [
+            "MedInc",
+            "HouseAge",
+            "AveRooms",
+            "AveBedrms",
+            "Population",
+            "AveOccup",
+            "Latitude",
+            "Longitude",
+            "Price",
+        ]
         results = {"passed": True, "validations": [], "errors": []}
 
         # Ensure all required columns are present before proceeding with other column-specific checks
@@ -21,13 +30,16 @@ class HousingDataValidator:
             results["errors"].append("Missing required columns")
             results["passed"] = False
             logger.error("Missing required columns")
-            return results # Early exit if fundamental columns are missing
+            return results  # Early exit if fundamental columns are missing
 
         checks = [
             (len(df) >= 100, f"Minimum {len(df)} rows >= 100"),
             (df.duplicated().sum() == 0, "No duplicate rows found"),
-            ((df['Price'] >= 0).all(), "All prices non-negative"),
-            (df[required_cols].isnull().sum().sum() == 0, "No missing values in critical columns"),
+            ((df["Price"] >= 0).all(), "All prices non-negative"),
+            (
+                df[required_cols].isnull().sum().sum() == 0,
+                "No missing values in critical columns",
+            ),
         ]
 
         for passed, msg in checks:

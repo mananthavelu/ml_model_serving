@@ -20,11 +20,11 @@ def setup_logging(level: str = "INFO") -> None:
 
     logging.basicConfig(
         level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[
             logging.StreamHandler(),
-            logging.FileHandler('logs/mlops.log', mode='a')
-        ]
+            logging.FileHandler("logs/mlops.log", mode="a"),
+        ],
     )
 
 
@@ -39,7 +39,7 @@ def load_config(config_path: str) -> Dict[str, Any]:
         Dictionary containing configuration
     """
     try:
-        with open(config_path, 'r') as f:
+        with open(config_path, "r") as f:
             config = yaml.safe_load(f)
         return config
     except FileNotFoundError:

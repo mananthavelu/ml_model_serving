@@ -35,7 +35,11 @@ class HousingPredictor:
             raise ValueError("Model not loaded")
         processed = self.preprocess_input(input_data)
         predictions = self.model.predict(processed)
-        preds = predictions.tolist() if hasattr(predictions, 'tolist') else [float(predictions[0])]
+        preds = (
+            predictions.tolist()
+            if hasattr(predictions, "tolist")
+            else [float(predictions[0])]
+        )
         logger.info(f"Predictions: {len(preds)} samples")
         return {"predictions": preds, "count": len(preds)}
 
@@ -44,8 +48,11 @@ class HousingPredictor:
         price = result["predictions"][0]
         return {
             "predicted_price": round(price, 2),
-            "confidence_range": {"lower": round(price * 0.9, 2), "upper": round(price * 1.1, 2)},
-            "input_features": house_data
+            "confidence_range": {
+                "lower": round(price * 0.9, 2),
+                "upper": round(price * 1.1, 2),
+            },
+            "input_features": house_data,
         }
 
 
