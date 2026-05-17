@@ -30,7 +30,7 @@ python-dotenv==1.0.0   # Environment variable management
 pyyaml==6.0.1          # Config file parsing
 
 # Code Quality
-flake8==7.0.0          # Linting for code style and errors
+flake8          # Linting for code style and errors
 mypy==1.8.0            # Static type checking
 click==8.1.7           # CLI tool creation
 
