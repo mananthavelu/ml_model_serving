@@ -1,5 +1,6 @@
 """Data validation module for housing prices dataset."""
 
+from typing import Dict, List, Any
 import pandas as pd
 from src.utils import get_logger
 
@@ -9,7 +10,7 @@ logger = get_logger(__name__)
 class HousingDataValidator:
     """Validator for housing prices dataset."""
 
-    def validate(self, df: pd.DataFrame) -> dict:
+    def validate(self, df: pd.DataFrame) -> Dict[str, Any]:
         """Validate housing dataset against expectations."""
         required_cols = [
             "MedInc",
@@ -22,7 +23,11 @@ class HousingDataValidator:
             "Longitude",
             "Price",
         ]
-        results = {"passed": True, "validations": [], "errors": []}
+        results: Dict[str, Any] = {
+            "passed": True,
+            "validations": [],
+            "errors": [],
+        }
 
         # Ensure all required columns are present before proceeding
         # with other column-specific checks
