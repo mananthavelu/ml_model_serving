@@ -1,6 +1,6 @@
 """Data validation module for housing prices dataset."""
 
-from typing import Dict, List, Any
+from typing import Dict, Any
 import pandas as pd
 from src.utils import get_logger
 
