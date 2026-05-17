@@ -29,9 +29,10 @@ def test_api_health():
     status, _ = _make_request("GET", "/health")
     if status == 200:
         logger.info("API health check passed")
-        return True
-    logger.error(f"✗ API health check failed: {status}")
-    return False
+        assert True # Replaced return True with assert True
+    else:
+        logger.error(f"✗ API health check failed: {status}")
+        assert False
 
 
 def test_model_info():
@@ -39,9 +40,10 @@ def test_model_info():
     status, data = _make_request("GET", "/model/info")
     if status == 200:
         logger.info(f"Model info retrieved: {data['model_type']}")
-        return True
-    logger.error(f"✗ Model info failed: {status}")
-    return False
+        assert True # Replaced return True with assert True
+    else:
+        logger.error(f"✗ Model info failed: {status}")
+        assert False
 
 
 def test_single_prediction():
@@ -53,9 +55,10 @@ def test_single_prediction():
     status, data = _make_request("POST", "/predict", house_data)
     if status == 200:
         logger.info(f"Single prediction: ${data['predicted_price']:.2f}k")
-        return True
-    logger.error(f"✗ Single prediction failed: {status}")
-    return False
+        assert True # Replaced return True with assert True
+    else:
+        logger.error(f"✗ Single prediction failed: {status}")
+        assert False
 
 
 def test_batch_prediction():
@@ -71,9 +74,10 @@ def test_batch_prediction():
     status, data = _make_request("POST", "/predict/batch", batch_data)
     if status == 200:
         logger.info(f"Batch prediction: {data['count']} houses predicted")
-        return True
-    logger.error(f"✗ Batch prediction failed: {status}")
-    return False
+        assert True # Replaced return True with assert True
+    else:
+        logger.error(f"✗ Batch prediction failed: {status}")
+        assert False
 
 
 def run_api_tests():

@@ -2380,3 +2380,17 @@ Data processing successful!
 2026-05-17 16:52:48,721 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
 2026-05-17 16:52:48,740 - src.models.inference - INFO - Predictions: 1 samples
 2026-05-17 16:52:48,740 - src.api.predict - INFO - Prediction: 0.91
+2026-05-17 21:06:52,055 - src.data.preprocessor - INFO - Removed outliers. Shape: (1, 8)
+2026-05-17 21:06:52,074 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
+2026-05-17 21:06:52,120 - src.models.inference - INFO - Predictions: 1 samples
+2026-05-17 21:06:52,120 - src.api.predict - INFO - Prediction: 3.97
+2026-05-17 21:06:54,183 - src.data.preprocessor - INFO - Removed outliers. Shape: (2, 8)
+2026-05-17 21:06:54,184 - src.data.preprocessor - INFO - Preprocessing complete: (2, 8)
+2026-05-17 21:06:54,200 - src.models.inference - INFO - Predictions: 2 samples
+2026-05-17 21:13:42,885 - src.data.preprocessor - INFO - Removed outliers. Shape: (1, 8)
+2026-05-17 21:13:42,887 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
+2026-05-17 21:13:42,905 - src.models.inference - INFO - Predictions: 1 samples
+2026-05-17 21:13:42,906 - src.api.predict - INFO - Prediction: 3.97
+2026-05-17 21:13:44,964 - src.data.preprocessor - INFO - Removed outliers. Shape: (2, 8)
+2026-05-17 21:13:44,966 - src.data.preprocessor - INFO - Preprocessing complete: (2, 8)
+2026-05-17 21:13:45,010 - src.models.inference - INFO - Predictions: 2 samples

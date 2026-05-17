@@ -22,7 +22,7 @@ class HousingPreprocessor:
         df = df.copy()
         for col in self.numerical_features:
             if col in df.columns and df[col].isnull().any():
-                df[col].fillna(df[col].median(), inplace=True)
+                df[col] = df[col].fillna(df[col].median())
         return df
 
     def remove_outliers(self, df: pd.DataFrame, iqr_multiplier: float = 1.5) -> pd.DataFrame:
