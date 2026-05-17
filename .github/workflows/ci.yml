@@ -47,7 +47,7 @@ jobs:
       - name: Run tests
         run: |
           python -m pip install --upgrade pytest || true
-          pytest -q
+          PYTHONPATH=$GITHUB_WORKSPACE pytest tests/ -v
 
       - name: Build Docker image
         run: docker build -t ml_model_serving_api:latest ./deployment/docker
