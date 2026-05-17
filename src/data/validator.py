@@ -24,8 +24,11 @@ class HousingDataValidator:
         ]
         results = {"passed": True, "validations": [], "errors": []}
 
-        # Ensure all required columns are present before proceeding with other column-specific checks
-        has_all_required_cols = all(col in df.columns for col in required_cols)
+        # Ensure all required columns are present before proceeding
+        # with other column-specific checks
+        has_all_required_cols = all(
+            col in df.columns for col in required_cols
+        )
         if not has_all_required_cols:
             results["errors"].append("Missing required columns")
             results["passed"] = False

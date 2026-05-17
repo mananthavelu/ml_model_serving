@@ -34,8 +34,11 @@ def generate_housing_data(
         + np.random.normal(0, 0.3, n_samples)
     )
     df["Price"] = np.clip(price, 0.5, 5.0)
+    price_min = f"${df['Price'].min():.2f}k"
+    price_max = f"${df['Price'].max():.2f}k"
     logger.info(
-        f"Generated {df.shape[0]} samples. Price range: ${df['Price'].min():.2f}k - ${df['Price'].max():.2f}k"
+        f"Generated {df.shape[0]} samples. "
+        f"Price range: {price_min} - {price_max}"
     )
     return df
 

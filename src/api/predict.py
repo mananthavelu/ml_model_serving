@@ -27,7 +27,8 @@ try:
     preprocessor = joblib.load(PREPROCESSOR_PATH)
 except Exception:
     logger.warning(
-        f"Preprocessor not found at {PREPROCESSOR_PATH}. Initializing default preprocessor."
+        f"Preprocessor not found at {PREPROCESSOR_PATH}. "
+        f"Initializing default preprocessor."
     )
     preprocessor = HousingPreprocessor(
         scaling=config["features"].get("scaling", "standard")
@@ -38,7 +39,8 @@ try:
     model_uri = f"models:/{MODEL_NAME}/{MODEL_STAGE}"
     predictor = mlflow.pyfunc.load_model(model_uri)
     logger.info(
-        f"Successfully loaded model '{MODEL_NAME}' in stage '{MODEL_STAGE}' from MLflow Registry."
+        f"Successfully loaded model '{MODEL_NAME}' "
+        f"in stage '{MODEL_STAGE}' from MLflow Registry."
     )
 except Exception as e:
     logger.error(f"Failed to load model from MLflow Registry: {e}")

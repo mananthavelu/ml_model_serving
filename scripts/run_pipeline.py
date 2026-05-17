@@ -86,7 +86,10 @@ def run_full_pipeline():
         },
         # Step 5: Test API startup (background)
         {
-            "command": "timeout 10 python -m scripts.serve_api || echo 'API startup test completed'",
+            "command": (
+                "timeout 10 python -m scripts.serve_api || "
+                "echo 'API startup test completed'"
+            ),
             "description": "Test API server startup",
         },
     ]

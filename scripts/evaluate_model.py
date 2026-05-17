@@ -25,9 +25,10 @@ def evaluate_housing_model(
     X_test = test_df.drop(columns=[target_col])
     y_test = test_df[[target_col]]
 
-    mlflow.start_run(
-        run_name=f"{config['model']['registry'].get('run_name', 'default_evaluation_run')}_eval"
+    run_name_prefix = config['model']['registry'].get(
+        'run_name', 'default_evaluation_run'
     )
+    mlflow.start_run(run_name=f"{run_name_prefix}_eval")
     trainer = HousingModelTrainer.load_model(model_path)
     metrics = trainer.evaluate(X_test, y_test)
 

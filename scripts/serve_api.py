@@ -13,8 +13,6 @@ setup_logging("INFO")
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    from src.api.predict import app
-
     logger.info("Starting Housing Prices Prediction API server...")
     logger.info("API will be available at: http://localhost:8000")
     logger.info("Documentation at: http://localhost:8000/docs")
