@@ -1,0 +1,2382 @@
+2026-05-09 20:25:35,665 - __main__ - INFO - Generating 1000 synthetic housing records...
+2026-05-09 20:25:35,677 - __main__ - INFO - Generated dataset shape: (1000, 9)
+2026-05-09 20:25:35,679 - __main__ - INFO - Price range: $5.00k - $5.00k
+2026-05-09 20:25:35,680 - __main__ - INFO - Missing values: 0
+2026-05-09 20:25:35,738 - __main__ - INFO - Saved sample housing data to: data/raw/housing.csv
+2026-05-09 20:25:35,738 - __main__ - INFO - 
+Dataset Summary:
+2026-05-09 20:25:35,769 - __main__ - INFO -             MedInc     HouseAge     AveRooms  ...     Latitude    Longitude   Price
+count  1000.000000  1000.000000  1000.000000  ...  1000.000000  1000.000000  1000.0
+mean      6.250803    25.584783     7.053563  ...    36.967782  -119.584853     5.0
+std       6.272109    16.697989     4.294972  ...     2.952820     3.201498     0.0
+min       0.335205     1.551028     1.077581  ...    32.001577  -124.985330     5.0
+25%       2.669600    12.955825     3.996362  ...    34.329362  -122.412235     5.0
+50%       4.573326    21.789898     6.158053  ...    36.898401  -119.708349     5.0
+75%       7.525936    33.447166     9.159273  ...    39.582084  -116.809627     5.0
+max      97.727715   110.305774    41.830698  ...    41.986985  -114.012707     5.0
+
+[8 rows x 9 columns]
+2026-05-09 20:41:56,883 - __main__ - INFO - Generating 1000 synthetic housing records...
+2026-05-09 20:41:56,887 - __main__ - INFO - Generated dataset shape: (1000, 9)
+2026-05-09 20:41:56,887 - __main__ - INFO - Price range: $5.00k - $5.00k
+2026-05-09 20:41:56,888 - __main__ - INFO - Missing values: 0
+2026-05-09 20:41:56,908 - __main__ - INFO - Saved sample housing data to: data/raw/housing.csv
+2026-05-09 20:41:56,909 - __main__ - INFO - 
+Dataset Summary:
+2026-05-09 20:41:56,919 - __main__ - INFO -             MedInc     HouseAge     AveRooms    AveBedrms    Population     AveOccup     Latitude    Longitude   Price
+count  1000.000000  1000.000000  1000.000000  1000.000000   1000.000000  1000.000000  1000.000000  1000.000000  1000.0
+mean      6.250803    25.584783     7.053563     3.961162    509.412896     5.127397    36.967782  -119.584853     5.0
+std       6.272109    16.697989     4.294972     2.124683   1473.165034     2.888150     2.952820     3.201498     0.0
+min       0.335205     1.551028     1.077581     1.067235      1.183499     1.046128    32.001577  -124.985330     5.0
+25%       2.669600    12.955825     3.996362     2.460323     48.055566     3.087200    34.329362  -122.412235     5.0
+50%       4.573326    21.789898     6.158053     3.440932    143.835416     4.415094    36.898401  -119.708349     5.0
+75%       7.525936    33.447166     9.159273     4.992348    426.771193     6.470213    39.582084  -116.809627     5.0
+max      97.727715   110.305774    41.830698    15.445356  29542.429034    19.570096    41.986985  -114.012707     5.0
+2026-05-10 09:33:17,961 - __main__ - INFO - ============================================================
+2026-05-10 09:33:17,962 - __main__ - INFO - Starting Housing Prices Data Processing Pipeline
+2026-05-10 09:33:17,962 - __main__ - INFO - ============================================================
+2026-05-10 09:33:17,974 - __main__ - INFO - 
+[STEP 1] Loading raw data...
+2026-05-10 09:33:17,990 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-10 09:33:17,990 - __main__ - INFO - Loaded data shape: (1000, 9)
+2026-05-10 09:33:17,990 - __main__ - INFO - Columns: ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude', 'Price']
+2026-05-10 09:33:17,990 - __main__ - INFO - 
+[STEP 2] Checking data quality...
+2026-05-10 09:33:17,995 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0, 'data_types': {'MedInc': dtype('float64'), 'HouseAge': dtype('float64'), 'AveRooms': dtype('float64'), 'AveBedrms': dtype('float64'), 'Population': dtype('float64'), 'AveOccup': dtype('float64'), 'Latitude': dtype('float64'), 'Longitude': dtype('float64'), 'Price': dtype('float64')}}
+2026-05-10 09:33:17,995 - __main__ - INFO - 
+[STEP 3] Validating data against expectations...
+2026-05-10 09:33:18,000 - src.data.validator - INFO - Validation Results: PASSED
+2026-05-10 09:33:18,019 - __main__ - INFO - 
+[STEP 4] Preprocessing data...
+2026-05-10 09:33:18,019 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 09:33:18,020 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 09:33:18,031 - src.data.preprocessor - INFO - Removed 278 outlier rows (IQR multiplier: 1.5)
+2026-05-10 09:33:18,036 - src.data.preprocessor - INFO - Fitted and scaled 8 features with standard scaling
+2026-05-10 09:33:18,037 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (722, 9)
+2026-05-10 09:33:18,037 - __main__ - INFO - 
+[STEP 5] Splitting data into train/test sets...
+2026-05-10 09:33:18,040 - __main__ - INFO - Train set: 577 samples
+2026-05-10 09:33:18,040 - __main__ - INFO - Test set: 145 samples
+2026-05-10 09:33:18,040 - __main__ - INFO - 
+[STEP 6] Saving processed data...
+2026-05-10 09:33:18,051 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-10 09:33:18,054 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-10 09:33:18,054 - __main__ - INFO - 
+============================================================
+2026-05-10 09:33:18,054 - __main__ - INFO - Data Processing Pipeline Complete!
+2026-05-10 09:33:18,055 - __main__ - INFO - ============================================================
+2026-05-10 09:33:18,055 - __main__ - INFO - 
+Data processing successful!
+2026-05-10 09:33:18,055 - __main__ - INFO - Training data: X shape (577, 8), y shape (577, 1)
+2026-05-10 09:33:18,055 - __main__ - INFO - Test data: X shape (145, 8), y shape (145, 1)
+2026-05-10 09:36:06,241 - __main__ - INFO - ============================================================
+2026-05-10 09:36:06,242 - __main__ - INFO - Starting Housing Prices Data Processing Pipeline
+2026-05-10 09:36:06,242 - __main__ - INFO - ============================================================
+2026-05-10 09:36:06,250 - __main__ - INFO - 
+[STEP 1] Loading raw data...
+2026-05-10 09:36:06,257 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-10 09:36:06,258 - __main__ - INFO - Loaded data shape: (1000, 9)
+2026-05-10 09:36:06,258 - __main__ - INFO - Columns: ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude', 'Price']
+2026-05-10 09:36:06,258 - __main__ - INFO - 
+[STEP 2] Checking data quality...
+2026-05-10 09:36:06,261 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0, 'data_types': {'MedInc': dtype('float64'), 'HouseAge': dtype('float64'), 'AveRooms': dtype('float64'), 'AveBedrms': dtype('float64'), 'Population': dtype('float64'), 'AveOccup': dtype('float64'), 'Latitude': dtype('float64'), 'Longitude': dtype('float64'), 'Price': dtype('float64')}}
+2026-05-10 09:36:06,261 - __main__ - INFO - 
+[STEP 3] Validating data against expectations...
+2026-05-10 09:36:06,263 - src.data.validator - INFO - Validation Results: PASSED
+2026-05-10 09:36:06,272 - __main__ - INFO - 
+[STEP 4] Preprocessing data...
+2026-05-10 09:36:06,272 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 09:36:06,276 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 09:36:06,286 - src.data.preprocessor - INFO - Removed 278 outlier rows (IQR multiplier: 1.5)
+2026-05-10 09:36:06,292 - src.data.preprocessor - INFO - Fitted and scaled 8 features with standard scaling
+2026-05-10 09:36:06,294 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (722, 9)
+2026-05-10 09:36:06,294 - __main__ - INFO - 
+[STEP 5] Splitting data into train/test sets...
+2026-05-10 09:36:06,296 - __main__ - INFO - Train set: 577 samples
+2026-05-10 09:36:06,296 - __main__ - INFO - Test set: 145 samples
+2026-05-10 09:36:06,297 - __main__ - INFO - 
+[STEP 6] Saving processed data...
+2026-05-10 09:36:06,310 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-10 09:36:06,315 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-10 09:36:06,315 - __main__ - INFO - 
+============================================================
+2026-05-10 09:36:06,315 - __main__ - INFO - Data Processing Pipeline Complete!
+2026-05-10 09:36:06,316 - __main__ - INFO - ============================================================
+2026-05-10 09:36:06,316 - __main__ - INFO - 
+Data processing successful!
+2026-05-10 09:36:06,316 - __main__ - INFO - Training data: X shape (577, 8), y shape (577, 1)
+2026-05-10 09:36:06,317 - __main__ - INFO - Test data: X shape (145, 8), y shape (145, 1)
+2026-05-10 09:36:46,892 - __main__ - INFO - ============================================================
+2026-05-10 09:36:46,892 - __main__ - INFO - Starting Housing Model Training
+2026-05-10 09:36:46,892 - __main__ - INFO - ============================================================
+2026-05-10 09:36:46,897 - __main__ - INFO - Loading training data from: data/processed/train.csv
+2026-05-10 09:36:46,901 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-10 09:36:46,901 - __main__ - INFO - Training data shape: (577, 9)
+2026-05-10 09:36:46,903 - __main__ - INFO - Features: 8 columns
+2026-05-10 09:36:46,904 - __main__ - INFO - Target: Price
+2026-05-10 09:36:46,904 - __main__ - INFO - Training random_forest model with hyperparameters: {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}
+2026-05-10 09:36:46,904 - src.models.trainer - INFO - Training random_forest model...
+2026-05-10 09:36:46,904 - src.models.trainer - INFO - Training data shape: (577, 8)
+2026-05-10 09:36:46,940 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 09:36:46,940 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 09:36:47,083 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 09:36:47,083 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 09:36:47,115 - src.models.trainer - INFO - Training completed. Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 09:36:47,134 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 09:36:47,135 - __main__ - INFO - ============================================================
+2026-05-10 09:36:47,135 - __main__ - INFO - Model Training Complete!
+2026-05-10 09:36:47,135 - __main__ - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 09:36:47,135 - __main__ - INFO - Training R² Score: 1.0000
+2026-05-10 09:36:47,136 - __main__ - INFO - ============================================================
+2026-05-10 09:36:47,136 - __main__ - INFO - Model training successful!
+2026-05-10 09:36:47,136 - __main__ - INFO - Results: {'model_type': 'random_forest', 'hyperparameters': {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}, 'training_metrics': {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}, 'model_path': 'models/artifacts/housing_model.pkl', 'training_data_shape': (577, 9), 'feature_columns': ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']}
+2026-05-10 09:38:59,736 - __main__ - INFO - ============================================================
+2026-05-10 09:38:59,737 - __main__ - INFO - Starting Housing Model Training
+2026-05-10 09:38:59,737 - __main__ - INFO - ============================================================
+2026-05-10 09:38:59,742 - __main__ - INFO - Loading training data from: data/processed/train.csv
+2026-05-10 09:38:59,748 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-10 09:38:59,748 - __main__ - INFO - Training data shape: (577, 9)
+2026-05-10 09:38:59,749 - __main__ - INFO - Features: 8 columns
+2026-05-10 09:38:59,749 - __main__ - INFO - Target: Price
+2026-05-10 09:38:59,750 - __main__ - INFO - Training random_forest model with hyperparameters: {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}
+2026-05-10 09:38:59,750 - src.models.trainer - INFO - Training random_forest model...
+2026-05-10 09:38:59,750 - src.models.trainer - INFO - Training data shape: (577, 8)
+2026-05-10 09:38:59,771 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 09:38:59,771 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 09:38:59,861 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 09:38:59,862 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 09:38:59,880 - src.models.trainer - INFO - Training completed. Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 09:38:59,898 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 09:38:59,898 - __main__ - INFO - ============================================================
+2026-05-10 09:38:59,899 - __main__ - INFO - Model Training Complete!
+2026-05-10 09:38:59,899 - __main__ - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 09:38:59,899 - __main__ - INFO - Training R² Score: 1.0000
+2026-05-10 09:38:59,899 - __main__ - INFO - ============================================================
+2026-05-10 09:38:59,899 - __main__ - INFO - Model training successful!
+2026-05-10 09:38:59,900 - __main__ - INFO - Results: {'model_type': 'random_forest', 'hyperparameters': {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}, 'training_metrics': {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}, 'model_path': 'models/artifacts/housing_model.pkl', 'training_data_shape': (577, 9), 'feature_columns': ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']}
+2026-05-10 09:43:19,750 - __main__ - INFO - ============================================================
+2026-05-10 09:43:19,750 - __main__ - INFO - Starting Housing Model Evaluation
+2026-05-10 09:43:19,750 - __main__ - INFO - ============================================================
+2026-05-10 09:43:19,756 - __main__ - INFO - Loading test data from: data/processed/test.csv
+2026-05-10 09:43:19,759 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-10 09:43:19,759 - __main__ - INFO - Test data shape: (145, 9)
+2026-05-10 09:43:19,760 - __main__ - INFO - Features: 8 columns
+2026-05-10 09:43:19,761 - __main__ - INFO - Target: Price
+2026-05-10 09:43:19,761 - __main__ - INFO - Loading model from: models/artifacts/housing_model.pkl
+2026-05-10 09:43:19,782 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 09:43:19,782 - __main__ - INFO - Model type loaded: random_forest
+2026-05-10 09:43:19,783 - src.models.trainer - INFO - Evaluating model on test data...
+2026-05-10 09:43:19,783 - src.models.trainer - INFO - Test data shape: (145, 8)
+2026-05-10 09:43:19,787 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 09:43:19,787 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 09:43:19,809 - src.models.trainer - INFO - Evaluation completed. Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 09:43:19,809 - __main__ - INFO - ============================================================
+2026-05-10 09:43:19,809 - __main__ - INFO - Model Evaluation Complete!
+2026-05-10 09:43:19,809 - __main__ - INFO - Test R² Score: 1.0000
+2026-05-10 09:43:19,809 - __main__ - INFO - Test MSE: 0.0000
+2026-05-10 09:43:19,809 - __main__ - INFO - ============================================================
+2026-05-10 09:43:19,810 - __main__ - INFO - Model evaluation successful!
+2026-05-10 09:43:19,810 - __main__ - INFO - Evaluation Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 10:12:57,581 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:12:57,583 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:12:57,583 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:12:57,590 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:12:57,591 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:12:57,591 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:13:02,736 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:13:02,737 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:13:02,737 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:13:05,243 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:05,609 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:06,031 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:06,393 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:06,751 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:07,108 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:07,464 - watchfiles.main - INFO - 3 changes detected
+2026-05-10 10:13:08,547 - watchfiles.main - INFO - 6 changes detected
+2026-05-10 10:13:08,914 - watchfiles.main - INFO - 5 changes detected
+2026-05-10 10:13:13,235 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:13:13,236 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:13:13,236 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:13:13,300 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:13,653 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:14,012 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:14,424 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:14,829 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:15,236 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:15,639 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:16,046 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:16,452 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:16,853 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:16,910 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:13:16,911 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:13:16,911 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:13:16,919 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:13:16,919 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:13:16,919 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:13:17,207 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:17,352 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:17,562 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:17,721 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:17,922 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:18,077 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:18,380 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:18,434 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:18,793 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:18,796 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:19,154 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:19,154 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:19,513 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:19,513 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:19,873 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,231 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,231 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,639 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,639 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,996 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:20,996 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:21,406 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:21,406 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:21,675 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:13:21,676 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:13:21,676 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:13:21,761 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:22,119 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:22,119 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:22,528 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:22,528 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:22,933 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:23,338 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:23,338 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:23,743 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:23,743 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:24,148 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:24,549 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:25,055 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:25,414 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:25,414 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:25,825 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:25,825 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:26,232 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:26,232 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:26,635 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:26,635 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:27,042 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:27,500 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:27,862 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:27,862 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:28,271 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:28,271 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:28,625 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:28,982 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:29,347 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:29,756 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:29,756 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:30,164 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:30,164 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:30,569 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:30,975 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:31,383 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:31,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:32,192 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:32,192 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:32,597 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:32,597 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:33,000 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:33,000 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:33,409 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:33,815 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:34,220 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:34,626 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:35,029 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:35,436 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:35,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:36,250 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:36,250 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:36,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:37,071 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:37,071 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:37,475 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:37,842 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:38,251 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:38,656 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:38,656 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:39,062 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:39,062 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:39,466 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:39,871 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:40,274 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:40,274 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:40,679 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,086 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,086 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,491 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,491 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,908 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:41,908 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:42,312 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:42,312 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:42,717 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:43,083 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:43,492 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:43,492 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:43,900 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:43,900 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:44,308 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:44,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:44,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:45,116 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:45,521 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:45,521 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:45,929 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:46,332 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:46,693 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:46,693 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:47,101 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:47,504 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:47,908 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:48,311 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:48,311 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:48,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:48,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:49,119 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:49,524 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:49,524 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:49,931 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:50,337 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:50,743 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:50,743 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:51,147 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:51,147 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:51,514 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:51,924 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:51,924 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:52,326 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:52,326 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:52,731 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:52,731 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:53,135 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:53,539 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:53,944 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:53,944 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:54,350 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:54,350 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:54,757 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:55,161 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:55,162 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:55,566 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:55,969 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:56,375 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:56,376 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:56,780 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:57,187 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:57,593 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:57,593 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:57,998 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:58,405 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:58,405 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:58,810 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:59,217 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:13:59,624 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:00,030 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:00,432 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:00,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:00,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:01,193 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:01,598 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:02,002 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:02,002 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:02,405 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:02,808 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:03,214 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:03,214 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:03,629 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:04,033 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:04,437 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:04,437 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:04,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:05,244 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:05,651 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:05,651 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,058 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,058 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,462 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,462 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,828 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:06,829 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:07,188 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:07,547 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:07,547 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:07,955 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:08,360 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:08,361 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:08,765 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:08,765 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,171 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,171 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,575 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,575 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,979 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:09,979 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:10,382 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:10,786 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:11,191 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:11,191 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:11,596 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:12,012 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:12,419 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:12,823 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:12,823 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:13,227 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:13,632 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:13,632 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:14,049 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:14,454 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:14,861 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:15,264 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:15,264 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:15,671 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:15,671 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,076 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,076 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,434 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,435 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:16,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:17,247 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:17,247 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:17,651 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:17,652 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:18,069 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:18,069 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:18,473 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:18,473 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:18,878 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:19,231 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:19,231 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:19,640 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:19,641 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:20,047 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:20,454 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:20,454 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:20,855 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:20,856 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:21,262 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:21,262 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:21,668 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:21,668 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,073 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,073 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,476 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,491 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,856 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:22,891 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:23,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:23,294 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:23,668 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:23,700 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,071 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,103 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,475 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,506 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,873 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:24,893 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:25,280 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:25,311 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:25,686 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:25,716 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,123 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,526 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,847 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:26,878 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:27,236 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:27,255 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:27,645 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:27,660 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,048 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,063 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,453 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,469 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,855 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:28,871 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:29,259 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:29,275 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:29,631 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:29,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,041 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,072 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,444 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,476 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,849 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:30,879 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:31,253 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:31,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:31,656 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:31,687 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,092 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,449 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,467 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,858 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:32,873 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:33,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:33,279 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:33,667 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:33,683 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,049 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,070 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,457 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,472 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,863 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:34,878 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:35,267 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:35,284 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:35,672 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:35,689 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,077 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,092 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,480 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,494 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,896 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:36,896 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:37,303 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:37,709 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:38,117 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:38,117 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:38,523 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:38,925 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:38,925 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:39,328 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:39,328 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:39,683 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,900 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:40,901 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:41,302 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:41,302 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:41,707 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:41,707 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:42,110 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:42,517 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:42,925 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:42,925 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:43,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:43,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:43,690 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:43,690 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:44,098 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:44,099 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:44,503 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:44,503 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:44,906 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:45,309 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:45,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:45,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:46,068 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:46,428 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:46,428 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:46,784 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:46,784 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:47,191 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:47,598 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:48,001 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:48,410 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:48,410 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:48,817 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:49,220 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:49,572 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:49,985 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:50,389 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:50,389 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:50,798 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:51,201 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:51,201 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:51,617 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:51,617 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:51,984 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:52,394 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:52,394 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:52,747 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:53,104 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:53,104 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:53,467 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:53,876 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:53,876 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:54,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:54,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:54,687 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:55,092 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:55,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:55,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:55,899 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:55,914 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:56,273 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:56,326 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:56,681 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:56,694 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,085 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,101 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,492 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,507 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,896 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:57,911 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:58,301 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:58,317 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:58,706 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:58,723 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,063 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,078 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,472 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,488 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,878 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:14:59,894 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:00,282 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:00,297 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:00,686 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:00,702 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,057 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,465 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,496 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,869 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:01,900 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:02,274 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:02,304 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:02,676 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:02,708 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,083 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,114 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,488 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,518 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,885 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:03,905 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:04,293 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:04,308 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:04,700 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:04,716 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,104 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,120 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,462 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,477 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,819 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:05,836 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:06,226 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:06,242 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:06,631 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:06,647 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,035 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,051 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,438 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,454 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,842 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:07,857 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:08,247 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:08,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:08,651 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:08,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,055 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,069 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,428 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,462 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,867 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:09,885 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:10,251 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:10,271 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:10,659 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:10,674 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,063 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,079 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,465 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,481 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,870 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:11,885 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:12,223 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:12,239 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:12,633 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:12,648 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,036 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,053 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,443 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,459 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,825 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:13,845 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:14,233 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:14,249 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:14,637 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:14,652 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,044 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,059 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,417 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,452 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,824 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:15,855 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:16,227 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:16,259 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:16,616 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:16,636 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,023 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,039 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,427 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,443 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,832 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:17,847 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,237 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,252 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,592 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,607 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,948 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:18,962 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:19,357 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:19,372 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:19,738 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:19,773 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,151 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,182 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,548 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,567 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,954 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:20,970 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:21,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:21,377 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:21,767 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:21,782 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,169 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,185 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,552 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,572 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,958 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:22,974 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:23,363 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:23,379 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:23,769 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:23,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:24,177 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:24,191 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:24,581 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:24,596 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:24,998 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:25,034 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:25,398 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:25,401 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:25,812 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:26,214 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:26,621 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:26,621 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:27,027 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:27,430 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:27,430 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:27,833 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:27,833 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:28,238 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:28,238 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:28,644 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:28,644 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:29,050 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:29,050 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:29,456 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:29,861 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:30,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:30,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:30,665 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:31,067 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:31,067 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:31,474 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:31,828 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,188 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,188 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,547 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,547 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,903 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:32,903 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:33,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:33,623 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:33,623 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:33,980 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:34,384 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:34,792 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:34,792 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:35,197 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:35,197 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:35,604 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:35,604 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:36,008 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:36,416 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:36,818 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:36,818 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:37,226 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:37,630 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:37,986 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:38,344 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:38,344 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:38,751 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:39,156 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:39,560 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:39,561 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:39,966 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:40,372 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:40,372 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:40,775 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:40,775 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:41,181 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:41,586 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:41,992 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:41,992 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:42,398 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:42,398 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:42,802 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:42,802 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:43,218 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:43,218 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:43,621 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:44,027 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:44,027 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:44,432 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:44,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:45,146 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:45,146 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:45,505 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:45,912 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:45,912 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:46,318 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:46,318 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:46,734 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:47,142 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:47,546 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:47,952 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:48,355 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:48,355 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:48,760 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:48,760 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:49,164 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:49,570 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:49,927 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:49,927 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:50,335 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:50,335 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:50,739 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:50,739 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:51,144 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:51,548 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:51,549 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:51,915 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:51,915 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:52,323 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:52,323 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:52,728 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:53,133 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:53,537 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:53,537 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:53,942 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:54,345 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:54,346 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:54,751 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:54,751 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,153 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,153 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,560 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,560 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,964 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:55,966 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:56,367 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:56,772 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:56,772 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,177 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,177 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,535 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,535 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,946 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:57,946 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:58,351 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:58,707 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:58,707 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,114 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,114 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,521 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,521 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,926 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:15:59,927 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:00,332 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:00,750 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:00,750 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:01,153 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:01,557 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:01,962 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:01,962 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:02,370 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:02,370 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:02,772 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:03,180 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:03,584 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:03,584 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:03,991 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:03,991 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:04,345 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:04,704 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:04,704 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:05,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:05,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:05,420 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:05,778 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:05,778 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:06,137 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:06,546 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:06,952 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:06,952 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:07,358 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:07,762 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:08,169 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:08,169 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:08,573 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:08,977 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:09,384 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:09,787 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:09,787 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,192 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,192 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,595 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,596 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,950 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:10,950 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:11,310 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:11,669 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:11,669 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:12,028 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:12,028 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:12,384 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:12,741 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:12,741 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:13,148 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:13,149 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:13,551 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:13,957 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:14,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:14,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:14,772 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,176 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,176 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,580 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,580 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,982 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:15,982 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:16,387 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:16,792 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:17,145 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:17,502 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:17,502 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:17,907 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:18,263 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:18,625 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:18,987 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:19,397 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:19,752 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:20,113 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:20,469 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:20,829 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:21,191 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:21,552 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:21,913 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:22,322 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:22,727 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:23,131 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:23,537 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:23,939 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:24,346 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:24,750 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:25,153 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:25,557 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:25,963 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:26,368 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:26,771 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:27,178 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:27,594 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:27,998 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:28,402 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:28,758 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:29,118 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:29,478 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:29,835 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:30,194 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:30,602 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:31,010 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:31,412 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:31,817 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:32,221 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:32,578 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:32,987 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:33,406 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:33,811 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:34,216 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:34,622 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:35,029 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:35,383 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:35,791 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:36,197 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:36,604 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:37,008 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:37,411 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:37,814 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:38,221 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:38,628 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:39,033 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:39,438 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:39,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:40,200 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:40,664 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:41,052 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:41,415 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:41,776 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:42,136 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:42,498 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:42,857 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:43,217 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:43,576 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:43,985 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:44,391 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:44,428 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:16:44,429 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:16:44,429 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:16:44,435 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:16:44,435 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:16:44,435 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:16:44,749 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:44,915 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,108 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,280 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,468 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,639 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,926 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:45,999 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:46,281 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:46,360 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:46,641 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:46,720 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,002 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,080 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,440 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,771 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:47,800 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,159 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,178 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,567 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,582 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,973 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:48,989 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:49,044 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:16:49,045 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:16:49,045 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:16:49,329 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:49,345 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:49,688 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:49,704 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,045 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,401 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,417 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,763 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:50,778 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,121 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,136 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,494 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,529 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,903 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:51,935 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:52,291 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:52,310 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:52,700 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:52,715 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,068 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,103 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,477 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,508 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,880 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:53,911 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:54,282 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:54,313 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:54,688 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:54,718 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:55,096 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:55,126 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:55,499 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:55,854 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:56,261 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:56,614 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:56,971 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:57,325 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:57,683 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:58,041 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:58,452 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:58,858 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:59,261 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:16:59,627 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:00,035 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:00,440 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:00,844 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:01,250 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:01,654 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:02,059 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:02,464 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:02,869 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:03,276 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:03,680 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:04,087 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:04,489 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:04,845 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:11,022 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:11,383 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:11,742 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:12,151 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:12,554 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:12,959 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:13,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:13,771 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:14,177 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:14,579 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:14,934 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:15,345 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:15,749 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:16,155 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:16,561 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:16,965 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:17,370 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:17,723 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:18,080 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:18,437 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:18,794 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:19,205 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:19,611 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:20,015 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:20,417 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:20,822 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:21,227 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:21,629 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:22,032 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:22,440 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:22,847 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:23,260 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:23,621 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:24,032 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:24,438 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:24,843 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:25,248 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:25,664 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:26,072 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:26,477 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:26,883 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:27,286 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:27,701 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:28,109 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:28,512 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:28,920 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:29,327 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:29,734 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:30,137 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:30,541 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:30,944 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:31,362 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:31,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:32,073 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:32,432 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:32,790 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:33,201 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:33,615 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:34,018 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:34,423 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:34,826 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:35,232 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:35,636 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:36,042 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:36,446 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:36,850 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:37,253 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:37,660 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:38,065 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:38,470 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:38,826 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:39,235 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:39,637 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:40,042 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:40,450 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:40,852 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:41,259 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:41,662 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:42,065 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:42,419 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:42,777 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:43,131 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:43,490 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:43,848 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:44,256 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:44,660 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:45,064 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:45,469 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:45,873 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:46,281 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:46,685 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:47,090 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:47,493 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:47,909 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:48,312 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:48,716 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:49,069 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:49,423 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:49,780 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:50,189 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:50,593 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:50,997 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:51,356 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:51,764 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:52,172 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:52,579 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:52,981 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:53,387 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:53,791 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:54,196 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:54,601 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:55,005 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:55,407 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:55,759 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:56,469 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:56,821 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:57,228 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:57,633 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:58,043 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:58,446 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:58,849 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:59,257 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:17:59,660 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:00,027 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:00,433 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:00,837 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:01,241 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:01,657 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:02,011 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:02,419 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:02,822 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:03,225 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:03,630 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:04,035 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:04,442 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:04,845 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:05,254 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:05,659 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:06,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:06,468 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:06,822 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:07,232 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:07,637 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:08,042 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:08,444 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:08,848 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:09,252 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:09,655 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:10,061 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:10,467 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:10,876 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:11,279 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:11,683 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:12,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:12,494 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:12,899 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:13,304 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:13,720 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:14,123 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:14,481 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:14,891 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:15,246 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:15,603 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:16,013 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:16,420 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:16,824 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:17,229 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:17,634 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:18,042 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:18,447 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:18,814 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:19,222 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:19,627 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:20,029 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:20,434 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:20,841 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:21,247 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:21,601 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:22,006 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:22,411 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:22,818 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:23,223 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:23,630 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:24,035 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:24,441 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:24,845 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:25,249 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:25,654 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:26,057 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:26,461 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:26,816 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:27,223 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:27,638 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:28,043 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:28,398 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:28,807 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:29,213 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:29,620 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:30,026 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:30,433 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:30,837 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:31,290 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:31,653 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:32,062 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:32,465 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:32,868 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:33,277 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:33,692 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:34,097 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:34,503 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:34,857 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:35,264 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:35,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:36,074 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:36,479 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:36,882 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:37,287 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:37,691 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:38,096 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:38,505 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:38,909 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:39,314 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:39,720 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:40,123 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:40,478 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:40,888 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:41,242 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:41,600 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:41,958 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:42,365 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:42,768 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:43,170 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:43,573 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:43,975 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:44,379 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:44,785 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:45,190 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:45,598 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:46,001 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:46,405 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:46,810 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:47,215 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:47,620 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:48,023 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:48,426 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:48,830 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:49,189 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:49,601 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:50,059 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:50,463 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:50,867 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:51,275 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:51,679 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:52,081 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:52,490 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:52,897 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:53,305 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:53,527 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:18:53,528 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:18:53,528 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:18:53,533 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:18:53,534 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:18:53,534 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:18:53,663 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:53,914 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,022 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,274 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,384 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,635 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,745 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:54,995 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:55,103 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:55,354 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:55,463 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:55,762 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:55,821 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,169 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,181 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,576 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,591 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,980 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:56,995 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:57,355 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:57,389 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:57,763 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:57,795 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,166 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,197 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,296 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:18:58,297 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:18:58,297 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:18:58,519 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,551 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,879 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:58,910 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,237 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,268 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,592 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,622 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,950 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:18:59,981 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:00,339 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:00,358 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:00,749 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:00,765 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,153 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,169 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,559 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,575 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,964 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:01,979 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:02,371 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:02,387 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:02,776 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:02,792 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:03,179 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:03,195 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:03,584 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:03,637 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,029 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,038 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,401 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,437 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,811 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:04,843 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,215 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,245 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,569 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,600 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,958 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:05,977 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:06,367 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:06,382 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:06,771 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:06,786 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,173 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,188 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,578 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,594 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,982 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:07,997 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:08,385 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:08,401 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:08,792 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:08,808 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:09,198 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:09,214 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:09,603 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:09,619 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,006 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,021 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,409 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,425 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,814 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:10,830 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:11,219 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:11,234 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:11,630 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:11,657 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,046 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,062 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,450 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,464 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,854 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:12,870 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:13,257 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:13,273 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:13,628 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:13,662 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,037 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,069 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,444 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,474 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,848 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:14,880 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:15,251 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:15,282 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:15,636 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:15,655 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,047 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,063 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,450 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,465 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,854 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:16,869 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:17,260 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:17,275 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:17,668 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:17,683 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,075 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,091 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,449 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,484 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,807 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:18,837 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,170 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,213 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,538 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,570 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,897 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:19,928 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:20,284 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:20,304 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:20,745 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:20,760 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,148 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,163 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,551 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,566 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,955 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:21,970 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:22,323 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:22,357 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:22,730 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:22,760 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,133 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,163 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,551 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,566 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,955 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:23,971 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:24,357 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:24,373 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:24,764 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:24,779 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:25,136 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:25,170 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:25,494 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:25,626 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:25,851 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,028 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,211 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,435 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,570 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,837 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:26,925 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:27,239 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:27,283 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:27,642 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:27,646 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:28,051 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:28,051 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:28,455 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:28,858 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:28,858 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:29,261 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:29,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:29,666 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:30,071 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:30,071 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:19:30,478 - watchfiles.main - INFO - 2 changes detected
+2026-05-10 10:19:30,478 - watchfiles.main - INFO - 2 changes detected
+2026-05-10 10:20:10,833 - watchfiles.main - INFO - 7 changes detected
+2026-05-10 10:20:14,542 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:19,133 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:20:19,134 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:20:19,134 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:20:19,189 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:19,551 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:19,916 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:20,279 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:20,635 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:20,994 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:21,353 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:21,714 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:22,072 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:22,479 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:22,888 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:23,292 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:23,697 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:24,104 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:24,543 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:24,954 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:25,393 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:25,794 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:26,198 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:26,601 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:27,005 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:27,409 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:27,815 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:28,221 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:28,586 - watchfiles.main - INFO - 1 change detected
+2026-05-10 10:20:42,588 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:20:42,588 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:20:42,589 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:20:42,596 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:20:42,596 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:20:42,597 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:22:12,744 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:22:12,744 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:22:12,744 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:22:12,752 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:22:12,752 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:22:12,752 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:23:27,600 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:23:27,601 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:23:27,601 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:23:27,607 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:23:27,607 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:23:27,607 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 10:24:03,926 - __main__ - INFO - Make sure to start the API server first:
+2026-05-10 10:24:03,926 - __main__ - INFO - python scripts/serve_api.py
+2026-05-10 10:24:03,926 - __main__ - INFO - 
+2026-05-10 10:24:03,927 - __main__ - INFO - ============================================================
+2026-05-10 10:24:03,927 - __main__ - INFO - TESTING HOUSING PRICES PREDICTION API
+2026-05-10 10:24:03,927 - __main__ - INFO - ============================================================
+2026-05-10 10:24:03,927 - __main__ - INFO - 
+Running: API Health Check
+2026-05-10 10:24:06,009 - __main__ - INFO - 
+Running: Model Info
+2026-05-10 10:24:08,050 - __main__ - INFO - Model type: RandomForestRegressor
+2026-05-10 10:24:08,050 - __main__ - INFO - 
+Running: Single Prediction
+2026-05-10 10:24:10,101 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:102: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 10:24:10,120 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 10:24:10,127 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 10:24:10,127 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 10:24:10,138 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 10:24:10,150 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 10:24:10,158 - src.api.predict - ERROR - Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-05-10 10:24:10,160 - __main__ - ERROR - Response: {"detail":"Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator."}
+2026-05-10 10:24:10,160 - __main__ - ERROR - Failed: Single Prediction
+2026-05-10 10:24:10,160 - __main__ - INFO - 
+Running: Batch Prediction
+2026-05-10 10:24:12,220 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:131: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  houses_data = [house.dict() for house in request.houses]
+
+2026-05-10 10:24:12,220 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 10:24:12,221 - src.api.predict - ERROR - Batch prediction failed: 'list' object has no attribute 'shape'
+2026-05-10 10:24:12,225 - __main__ - ERROR - Response: {"detail":"Batch prediction failed: 'list' object has no attribute 'shape'"}
+2026-05-10 10:24:12,226 - __main__ - ERROR - Failed: Batch Prediction
+2026-05-10 10:24:12,226 - __main__ - INFO - ============================================================
+2026-05-10 10:24:12,226 - __main__ - INFO - API Tests Results: 2/4 passed
+2026-05-10 10:24:12,228 - __main__ - INFO - ============================================================
+2026-05-10 10:26:41,074 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 10:26:41,075 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 10:26:41,075 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 10:26:41,081 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 10:26:41,081 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 10:26:41,081 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 13:36:39,963 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:102: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:36:39,966 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:36:39,966 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:36:39,969 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:36:39,979 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:36:39,982 - src.api.predict - ERROR - Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-05-10 13:37:54,159 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:102: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:37:54,160 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:37:54,161 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:37:54,161 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:37:54,165 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:37:54,181 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:37:54,182 - src.api.predict - ERROR - Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-05-10 13:38:19,151 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:102: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:38:19,152 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:38:19,152 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:38:19,152 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:38:19,154 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:38:19,179 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:38:19,180 - src.api.predict - ERROR - Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-05-10 13:41:22,746 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:102: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:41:22,747 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:41:22,748 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:41:22,748 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:41:22,750 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:41:22,756 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:41:22,758 - src.api.predict - ERROR - Prediction failed: This StandardScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2026-05-10 13:42:51,966 - __main__ - INFO - ============================================================
+2026-05-10 13:42:51,966 - __main__ - INFO - Starting Housing Prices Data Processing Pipeline
+2026-05-10 13:42:51,966 - __main__ - INFO - ============================================================
+2026-05-10 13:42:51,972 - __main__ - INFO - 
+[STEP 1] Loading raw data...
+2026-05-10 13:42:51,990 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-10 13:42:51,991 - __main__ - INFO - Loaded data shape: (1000, 9)
+2026-05-10 13:42:51,991 - __main__ - INFO - Columns: ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude', 'Price']
+2026-05-10 13:42:51,991 - __main__ - INFO - 
+[STEP 2] Checking data quality...
+2026-05-10 13:42:52,000 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0, 'data_types': {'MedInc': dtype('float64'), 'HouseAge': dtype('float64'), 'AveRooms': dtype('float64'), 'AveBedrms': dtype('float64'), 'Population': dtype('float64'), 'AveOccup': dtype('float64'), 'Latitude': dtype('float64'), 'Longitude': dtype('float64'), 'Price': dtype('float64')}}
+2026-05-10 13:42:52,000 - __main__ - INFO - 
+[STEP 3] Validating data against expectations...
+2026-05-10 13:42:52,003 - src.data.validator - INFO - Validation Results: PASSED
+2026-05-10 13:42:52,009 - __main__ - INFO - 
+[STEP 4] Preprocessing data...
+2026-05-10 13:42:52,009 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:42:52,010 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:42:52,019 - src.data.preprocessor - INFO - Removed 278 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:42:52,027 - src.data.preprocessor - INFO - Fitted and scaled 8 features with standard scaling
+2026-05-10 13:42:52,028 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (722, 9)
+2026-05-10 13:42:52,028 - __main__ - INFO - 
+[STEP 5] Splitting data into train/test sets...
+2026-05-10 13:42:52,032 - __main__ - INFO - Train set: 577 samples
+2026-05-10 13:42:52,032 - __main__ - INFO - Test set: 145 samples
+2026-05-10 13:42:52,032 - __main__ - INFO - 
+[STEP 6] Saving processed data...
+2026-05-10 13:42:52,042 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-10 13:42:52,045 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-10 13:42:52,047 - __main__ - INFO - Saved fitted preprocessor to: models/artifacts/preprocessor.pkl
+2026-05-10 13:42:52,047 - __main__ - INFO - 
+============================================================
+2026-05-10 13:42:52,047 - __main__ - INFO - Data Processing Pipeline Complete!
+2026-05-10 13:42:52,047 - __main__ - INFO - ============================================================
+2026-05-10 13:42:52,047 - __main__ - INFO - 
+Data processing successful!
+2026-05-10 13:42:52,047 - __main__ - INFO - Training data: X shape (577, 8), y shape (577, 1)
+2026-05-10 13:42:52,047 - __main__ - INFO - Test data: X shape (145, 8), y shape (145, 1)
+2026-05-10 13:43:09,806 - src.api.predict - INFO - Loaded fitted preprocessor from models/artifacts/preprocessor.pkl
+2026-05-10 13:43:09,821 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 13:43:09,821 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 13:43:09,821 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 13:43:09,829 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 13:43:09,829 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 13:43:09,830 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 13:43:23,705 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:43:23,707 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:43:23,707 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:43:23,707 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:43:23,708 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:43:23,715 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:43:23,718 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 13:43:23,718 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 13:43:23,729 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:43:23,729 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:43:23,750 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 13:43:23,751 - src.api.predict - INFO - Prediction made for house: {'MedInc': 8.5, 'HouseAge': 25.0, 'AveRooms': 6.2, 'AveBedrms': 1.1, 'Population': 1200.0, 'AveOccup': 3.2, 'Latitude': 37.5, 'Longitude': -122.2}
+2026-05-10 13:43:36,999 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:138: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  houses_data = [house.dict() for house in request.houses]
+
+2026-05-10 13:43:36,999 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:43:37,000 - src.models.inference - INFO - Preprocessing input data with shape: (3, 8)
+2026-05-10 13:43:37,000 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:43:37,002 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:43:37,008 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:43:37,009 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 13:43:37,009 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (3, 8)
+2026-05-10 13:43:37,010 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:43:37,011 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:43:37,027 - src.models.inference - INFO - Generated 3 predictions
+2026-05-10 13:43:37,027 - src.api.predict - INFO - Batch prediction completed for 3 houses
+2026-05-10 13:44:14,808 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:44:14,809 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:44:14,809 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:44:14,809 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:44:14,812 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:44:14,823 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:44:14,826 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 13:44:14,826 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 13:44:14,828 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:44:14,828 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:44:14,842 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 13:44:14,843 - src.api.predict - INFO - Prediction made for house: {'MedInc': 1.0, 'HouseAge': 0.0, 'AveRooms': 1.0, 'AveBedrms': 1.0, 'Population': 1.0, 'AveOccup': 1.0, 'Latitude': -90.0, 'Longitude': -180.0}
+2026-05-10 13:55:19,442 - __main__ - INFO - ============================================================
+2026-05-10 13:55:19,442 - __main__ - INFO - Starting Housing Model Training
+2026-05-10 13:55:19,442 - __main__ - INFO - ============================================================
+2026-05-10 13:55:19,448 - __main__ - INFO - Loading training data from: data/processed/train.csv
+2026-05-10 13:55:19,451 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-10 13:55:19,451 - __main__ - INFO - Training data shape: (577, 9)
+2026-05-10 13:55:19,452 - __main__ - INFO - Features: 8 columns
+2026-05-10 13:55:19,452 - __main__ - INFO - Target: Price
+2026-05-10 13:55:19,452 - __main__ - INFO - Training random_forest model with hyperparameters: {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}
+2026-05-10 13:55:19,452 - src.models.trainer - INFO - Training random_forest model...
+2026-05-10 13:55:19,452 - src.models.trainer - INFO - Training data shape: (577, 8)
+2026-05-10 13:55:19,471 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:55:19,472 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:55:19,539 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:55:19,539 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:55:19,558 - src.models.trainer - INFO - Training completed. Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 13:55:19,575 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 13:55:19,575 - __main__ - INFO - ============================================================
+2026-05-10 13:55:19,575 - __main__ - INFO - Model Training Complete!
+2026-05-10 13:55:19,575 - __main__ - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 13:55:19,575 - __main__ - INFO - Training R² Score: 1.0000
+2026-05-10 13:55:19,575 - __main__ - INFO - ============================================================
+2026-05-10 13:55:19,575 - __main__ - INFO - Model training successful!
+2026-05-10 13:55:19,575 - __main__ - INFO - Results: {'model_type': 'random_forest', 'hyperparameters': {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}, 'training_metrics': {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}, 'model_path': 'models/artifacts/housing_model.pkl', 'training_data_shape': (577, 9), 'feature_columns': ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']}
+2026-05-10 13:57:41,732 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 13:57:41,733 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 13:57:41,734 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 13:57:41,734 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 13:57:41,736 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 13:57:41,749 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 13:57:41,752 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 13:57:41,753 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 13:57:41,756 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:57:41,756 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:57:41,784 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 13:57:41,784 - src.api.predict - INFO - Prediction made for house: {'MedInc': 1.0, 'HouseAge': 0.0, 'AveRooms': 1.0, 'AveBedrms': 1.0, 'Population': 1.0, 'AveOccup': 1.0, 'Latitude': -90.0, 'Longitude': -180.0}
+2026-05-10 13:57:54,616 - __main__ - INFO - ============================================================
+2026-05-10 13:57:54,617 - __main__ - INFO - Starting Housing Model Evaluation
+2026-05-10 13:57:54,617 - __main__ - INFO - ============================================================
+2026-05-10 13:57:54,622 - __main__ - INFO - Loading test data from: data/processed/test.csv
+2026-05-10 13:57:54,624 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-10 13:57:54,624 - __main__ - INFO - Test data shape: (145, 9)
+2026-05-10 13:57:54,625 - __main__ - INFO - Features: 8 columns
+2026-05-10 13:57:54,625 - __main__ - INFO - Target: Price
+2026-05-10 13:57:54,625 - __main__ - INFO - Loading model from: models/artifacts/housing_model.pkl
+2026-05-10 13:57:54,637 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 13:57:54,637 - __main__ - INFO - Model type loaded: random_forest
+2026-05-10 13:57:54,638 - src.models.trainer - INFO - Evaluating model on test data...
+2026-05-10 13:57:54,638 - src.models.trainer - INFO - Test data shape: (145, 8)
+2026-05-10 13:57:54,639 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 13:57:54,640 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 13:57:54,660 - src.models.trainer - INFO - Evaluation completed. Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 13:57:54,660 - __main__ - INFO - ============================================================
+2026-05-10 13:57:54,660 - __main__ - INFO - Model Evaluation Complete!
+2026-05-10 13:57:54,660 - __main__ - INFO - Test R² Score: 1.0000
+2026-05-10 13:57:54,660 - __main__ - INFO - Test MSE: 0.0000
+2026-05-10 13:57:54,660 - __main__ - INFO - ============================================================
+2026-05-10 13:57:54,660 - __main__ - INFO - Model evaluation successful!
+2026-05-10 13:57:54,661 - __main__ - INFO - Evaluation Metrics: {'mse': 0.0, 'rmse': 0.0, 'mae': 0.0, 'r2_score': 1.0}
+2026-05-10 14:00:03,188 - src.api.predict - INFO - Loaded fitted preprocessor from models/artifacts/preprocessor.pkl
+2026-05-10 14:00:03,200 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 14:00:03,200 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 14:00:03,200 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 14:00:03,206 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 14:00:03,206 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 14:00:03,207 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 14:00:17,547 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 14:00:17,549 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 14:00:17,550 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 14:00:17,550 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 14:00:17,552 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 14:00:17,557 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 14:00:17,559 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 14:00:17,559 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 14:00:17,561 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:00:17,561 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:00:17,579 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 14:00:17,580 - src.api.predict - INFO - Prediction made for house: {'MedInc': 8.5, 'HouseAge': 5.0, 'AveRooms': 6.2, 'AveBedrms': 1.5, 'Population': 500.0, 'AveOccup': 2.5, 'Latitude': 37.8, 'Longitude': -122.4}
+2026-05-10 14:00:17,613 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 14:00:17,613 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 14:00:17,613 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 14:00:17,613 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 14:00:17,614 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 14:00:17,619 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 14:00:17,621 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 14:00:17,621 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 14:00:17,622 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:00:17,622 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:00:17,636 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 14:00:17,637 - src.api.predict - INFO - Prediction made for house: {'MedInc': 2.1, 'HouseAge': 52.0, 'AveRooms': 3.2, 'AveBedrms': 1.0, 'Population': 3000.0, 'AveOccup': 4.5, 'Latitude': 36.0, 'Longitude': -120.0}
+2026-05-10 14:00:17,640 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 14:00:17,640 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 14:00:17,641 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 14:00:17,641 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 14:00:17,642 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 14:00:17,647 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 14:00:17,648 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 14:00:17,648 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 14:00:17,649 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:00:17,649 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:00:17,664 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 14:00:17,665 - src.api.predict - INFO - Prediction made for house: {'MedInc': 5.5, 'HouseAge': 25.0, 'AveRooms': 5.0, 'AveBedrms': 1.2, 'Population': 1200.0, 'AveOccup': 3.0, 'Latitude': 35.0, 'Longitude': -118.5}
+2026-05-10 14:13:22,677 - __main__ - INFO - Generating 1000 synthetic housing records...
+2026-05-10 14:13:22,684 - __main__ - INFO - Generated dataset shape: (1000, 9)
+2026-05-10 14:13:22,684 - __main__ - INFO - Price range: $0.50k - $5.00k
+2026-05-10 14:13:22,685 - __main__ - INFO - Missing values: 0
+2026-05-10 14:13:22,699 - __main__ - INFO - Saved sample housing data to: data/raw/housing.csv
+2026-05-10 14:13:22,699 - __main__ - INFO - 
+Dataset Summary:
+2026-05-10 14:13:22,711 - __main__ - INFO -             MedInc     HouseAge  ...    Longitude        Price
+count  1000.000000  1000.000000  ...  1000.000000  1000.000000
+mean      6.250803    25.584783  ...  -119.584853     2.793117
+std       6.272109    16.697989  ...     3.201498     1.295452
+min       0.335205     1.551028  ...  -124.985330     0.500000
+25%       2.669600    12.955825  ...  -122.412235     1.778048
+50%       4.573326    21.789898  ...  -119.708349     2.477867
+75%       7.525936    33.447166  ...  -116.809627     3.754237
+max      97.727715   110.305774  ...  -114.012707     5.000000
+
+[8 rows x 9 columns]
+2026-05-10 14:17:51,218 - __main__ - INFO - ============================================================
+2026-05-10 14:17:51,218 - __main__ - INFO - Starting Housing Prices Data Processing Pipeline
+2026-05-10 14:17:51,218 - __main__ - INFO - ============================================================
+2026-05-10 14:17:51,225 - __main__ - INFO - 
+[STEP 1] Loading raw data...
+2026-05-10 14:17:51,230 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-10 14:17:51,230 - __main__ - INFO - Loaded data shape: (1000, 9)
+2026-05-10 14:17:51,230 - __main__ - INFO - Columns: ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude', 'Price']
+2026-05-10 14:17:51,230 - __main__ - INFO - 
+[STEP 2] Checking data quality...
+2026-05-10 14:17:51,232 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0, 'data_types': {'MedInc': dtype('float64'), 'HouseAge': dtype('float64'), 'AveRooms': dtype('float64'), 'AveBedrms': dtype('float64'), 'Population': dtype('float64'), 'AveOccup': dtype('float64'), 'Latitude': dtype('float64'), 'Longitude': dtype('float64'), 'Price': dtype('float64')}}
+2026-05-10 14:17:51,232 - __main__ - INFO - 
+[STEP 3] Validating data against expectations...
+2026-05-10 14:17:51,234 - src.data.validator - INFO - Validation Results: PASSED
+2026-05-10 14:17:51,240 - __main__ - INFO - 
+[STEP 4] Preprocessing data...
+2026-05-10 14:17:51,240 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 14:17:51,241 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 14:17:51,260 - src.data.preprocessor - INFO - Removed 278 outlier rows (IQR multiplier: 1.5)
+2026-05-10 14:17:51,270 - src.data.preprocessor - INFO - Fitted and scaled 8 features with standard scaling
+2026-05-10 14:17:51,271 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (722, 9)
+2026-05-10 14:17:51,271 - __main__ - INFO - 
+[STEP 5] Splitting data into train/test sets...
+2026-05-10 14:17:51,275 - __main__ - INFO - Train set: 577 samples
+2026-05-10 14:17:51,275 - __main__ - INFO - Test set: 145 samples
+2026-05-10 14:17:51,275 - __main__ - INFO - 
+[STEP 6] Saving processed data...
+2026-05-10 14:17:51,287 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-10 14:17:51,293 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-10 14:17:51,295 - __main__ - INFO - Saved fitted preprocessor to: models/artifacts/preprocessor.pkl
+2026-05-10 14:17:51,295 - __main__ - INFO - 
+============================================================
+2026-05-10 14:17:51,295 - __main__ - INFO - Data Processing Pipeline Complete!
+2026-05-10 14:17:51,295 - __main__ - INFO - ============================================================
+2026-05-10 14:17:51,295 - __main__ - INFO - 
+Data processing successful!
+2026-05-10 14:17:51,296 - __main__ - INFO - Training data: X shape (577, 8), y shape (577, 1)
+2026-05-10 14:17:51,296 - __main__ - INFO - Test data: X shape (145, 8), y shape (145, 1)
+2026-05-10 14:27:09,893 - __main__ - INFO - ============================================================
+2026-05-10 14:27:09,894 - __main__ - INFO - Starting Housing Model Training
+2026-05-10 14:27:09,894 - __main__ - INFO - ============================================================
+2026-05-10 14:27:09,902 - __main__ - INFO - Loading training data from: data/processed/train.csv
+2026-05-10 14:27:09,906 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-10 14:27:09,906 - __main__ - INFO - Training data shape: (577, 9)
+2026-05-10 14:27:09,907 - __main__ - INFO - Features: 8 columns
+2026-05-10 14:27:09,908 - __main__ - INFO - Target: Price
+2026-05-10 14:27:09,908 - __main__ - INFO - Training random_forest model with hyperparameters: {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}
+2026-05-10 14:27:09,908 - src.models.trainer - INFO - Training random_forest model...
+2026-05-10 14:27:09,908 - src.models.trainer - INFO - Training data shape: (577, 8)
+2026-05-10 14:27:09,929 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:27:09,929 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:27:10,045 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:27:10,045 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:27:10,073 - src.models.trainer - INFO - Training completed. Metrics: {'mse': 0.0243, 'rmse': 0.1559, 'mae': 0.1186, 'r2_score': 0.9819}
+2026-05-10 14:27:10,095 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 14:27:10,095 - __main__ - INFO - ============================================================
+2026-05-10 14:27:10,095 - __main__ - INFO - Model Training Complete!
+2026-05-10 14:27:10,095 - __main__ - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-10 14:27:10,095 - __main__ - INFO - Training R² Score: 0.9819
+2026-05-10 14:27:10,095 - __main__ - INFO - ============================================================
+2026-05-10 14:27:10,095 - __main__ - INFO - Model training successful!
+2026-05-10 14:27:10,095 - __main__ - INFO - Results: {'model_type': 'random_forest', 'hyperparameters': {'n_estimators': 100, 'max_depth': 15, 'min_samples_split': 5, 'min_samples_leaf': 2, 'random_state': 42, 'n_jobs': -1}, 'training_metrics': {'mse': 0.0243, 'rmse': 0.1559, 'mae': 0.1186, 'r2_score': 0.9819}, 'model_path': 'models/artifacts/housing_model.pkl', 'training_data_shape': (577, 9), 'feature_columns': ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']}
+2026-05-10 14:43:08,859 - __main__ - INFO - ============================================================
+2026-05-10 14:43:08,860 - __main__ - INFO - Starting Housing Model Evaluation
+2026-05-10 14:43:08,860 - __main__ - INFO - ============================================================
+2026-05-10 14:43:08,864 - __main__ - INFO - Loading test data from: data/processed/test.csv
+2026-05-10 14:43:08,868 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-10 14:43:08,869 - __main__ - INFO - Test data shape: (145, 9)
+2026-05-10 14:43:08,870 - __main__ - INFO - Features: 8 columns
+2026-05-10 14:43:08,870 - __main__ - INFO - Target: Price
+2026-05-10 14:43:08,870 - __main__ - INFO - Loading model from: models/artifacts/housing_model.pkl
+2026-05-10 14:43:08,887 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 14:43:08,887 - __main__ - INFO - Model type loaded: random_forest
+2026-05-10 14:43:08,887 - src.models.trainer - INFO - Evaluating model on test data...
+2026-05-10 14:43:08,887 - src.models.trainer - INFO - Test data shape: (145, 8)
+2026-05-10 14:43:08,890 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 14:43:08,890 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 14:43:08,911 - src.models.trainer - INFO - Evaluation completed. Metrics: {'mse': 0.1128, 'rmse': 0.3358, 'mae': 0.2431, 'r2_score': 0.9082}
+2026-05-10 14:43:08,911 - __main__ - INFO - ============================================================
+2026-05-10 14:43:08,912 - __main__ - INFO - Model Evaluation Complete!
+2026-05-10 14:43:08,912 - __main__ - INFO - Test R² Score: 0.9082
+2026-05-10 14:43:08,912 - __main__ - INFO - Test MSE: 0.1128
+2026-05-10 14:43:08,912 - __main__ - INFO - ============================================================
+2026-05-10 14:43:08,912 - __main__ - INFO - Model evaluation successful!
+2026-05-10 14:43:08,912 - __main__ - INFO - Evaluation Metrics: {'mse': 0.1128, 'rmse': 0.3358, 'mae': 0.2431, 'r2_score': 0.9082}
+2026-05-10 15:33:47,017 - src.api.predict - INFO - Loaded fitted preprocessor from models/artifacts/preprocessor.pkl
+2026-05-10 15:33:47,034 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-10 15:33:47,034 - src.models.inference - INFO - Model loaded successfully from models/artifacts/housing_model.pkl
+2026-05-10 15:33:47,034 - src.api.predict - INFO - Model and preprocessor loaded successfully
+2026-05-10 15:33:47,040 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-10 15:33:47,040 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-10 15:33:47,040 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-10 15:36:15,295 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 15:36:15,297 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 15:36:15,298 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 15:36:15,298 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 15:36:15,299 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 15:36:15,306 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 15:36:15,308 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 15:36:15,308 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 15:36:15,309 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 15:36:15,310 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 15:36:15,327 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 15:36:15,327 - src.api.predict - INFO - Prediction made for house: {'MedInc': 8.5, 'HouseAge': 5.0, 'AveRooms': 6.2, 'AveBedrms': 1.5, 'Population': 500.0, 'AveOccup': 2.5, 'Latitude': 37.8, 'Longitude': -122.4}
+2026-05-10 15:36:15,344 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 15:36:15,344 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 15:36:15,345 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 15:36:15,345 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 15:36:15,346 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 15:36:15,352 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 15:36:15,353 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 15:36:15,354 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 15:36:15,355 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 15:36:15,355 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 15:36:15,371 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 15:36:15,371 - src.api.predict - INFO - Prediction made for house: {'MedInc': 2.1, 'HouseAge': 52.0, 'AveRooms': 3.2, 'AveBedrms': 1.0, 'Population': 3000.0, 'AveOccup': 4.5, 'Latitude': 36.0, 'Longitude': -120.0}
+2026-05-10 15:36:15,375 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 15:36:15,375 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 15:36:15,376 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 15:36:15,376 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 15:36:15,377 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 15:36:15,382 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 15:36:15,384 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 15:36:15,384 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 15:36:15,386 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 15:36:15,387 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 15:36:15,402 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 15:36:15,402 - src.api.predict - INFO - Prediction made for house: {'MedInc': 5.5, 'HouseAge': 25.0, 'AveRooms': 5.0, 'AveBedrms': 1.2, 'Population': 1200.0, 'AveOccup': 3.0, 'Latitude': 35.0, 'Longitude': -118.5}
+2026-05-10 18:37:54,659 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 18:37:54,659 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 18:37:54,660 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 18:37:54,660 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 18:37:54,661 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 18:37:54,666 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 18:37:54,668 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 18:37:54,668 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 18:37:54,669 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 18:37:54,669 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 18:37:54,685 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 18:37:54,686 - src.api.predict - INFO - Prediction made for house: {'MedInc': 8.5, 'HouseAge': 25.0, 'AveRooms': 6.2, 'AveBedrms': 1.1, 'Population': 1200.0, 'AveOccup': 3.2, 'Latitude': 37.5, 'Longitude': -122.2}
+2026-05-10 18:37:56,737 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:138: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  houses_data = [house.dict() for house in request.houses]
+
+2026-05-10 18:37:56,737 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 18:37:56,738 - src.models.inference - INFO - Preprocessing input data with shape: (2, 8)
+2026-05-10 18:37:56,738 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 18:37:56,741 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 18:37:56,752 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 18:37:56,755 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 18:37:56,755 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (2, 8)
+2026-05-10 18:37:56,757 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 18:37:56,757 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 18:37:56,773 - src.models.inference - INFO - Generated 2 predictions
+2026-05-10 18:37:56,773 - src.api.predict - INFO - Batch prediction completed for 2 houses
+2026-05-10 18:37:56,775 - __main__ - INFO - API Tests: 4/4 passed
+2026-05-10 18:38:39,425 - __main__ - INFO - API health check passed
+2026-05-10 18:38:41,467 - __main__ - INFO - Model info retrieved: RandomForestRegressor
+2026-05-10 18:38:43,495 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  house_dict = house.dict()
+
+2026-05-10 18:38:43,495 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 18:38:43,495 - src.models.inference - INFO - Preprocessing input data with shape: (1, 8)
+2026-05-10 18:38:43,495 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 18:38:43,496 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 18:38:43,502 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 18:38:43,503 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 18:38:43,503 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (1, 8)
+2026-05-10 18:38:43,504 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 18:38:43,504 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 18:38:43,519 - src.models.inference - INFO - Generated 1 predictions
+2026-05-10 18:38:43,519 - src.api.predict - INFO - Prediction made for house: {'MedInc': 8.5, 'HouseAge': 25.0, 'AveRooms': 6.2, 'AveBedrms': 1.1, 'Population': 1200.0, 'AveOccup': 3.2, 'Latitude': 37.5, 'Longitude': -122.2}
+2026-05-10 18:38:43,520 - __main__ - INFO - Single prediction: $3.96k
+2026-05-10 18:38:45,544 - py.warnings - WARNING - C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\src\api\predict.py:138: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  houses_data = [house.dict() for house in request.houses]
+
+2026-05-10 18:38:45,545 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\main.py:979: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+  warnings.warn('The `dict` method is deprecated; use `model_dump` instead.', DeprecationWarning)
+
+2026-05-10 18:38:45,546 - src.models.inference - INFO - Preprocessing input data with shape: (2, 8)
+2026-05-10 18:38:45,546 - src.data.preprocessor - INFO - Starting preprocessing pipeline
+2026-05-10 18:38:45,550 - src.data.preprocessor - INFO - Missing values: 0 -> 0
+2026-05-10 18:38:45,562 - src.data.preprocessor - INFO - Removed 0 outlier rows (IQR multiplier: 1.5)
+2026-05-10 18:38:45,564 - src.data.preprocessor - INFO - Scaled 8 features with standard scaling
+2026-05-10 18:38:45,564 - src.data.preprocessor - INFO - Preprocessing complete. Final shape: (2, 8)
+2026-05-10 18:38:45,566 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:38: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+  if isinstance(node, ast.Num):  # <number>
+
+2026-05-10 18:38:45,566 - py.warnings - WARNING - C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\joblib\_utils.py:39: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+  return node.n
+
+2026-05-10 18:38:45,581 - src.models.inference - INFO - Generated 2 predictions
+2026-05-10 18:38:45,581 - src.api.predict - INFO - Batch prediction completed for 2 houses
+2026-05-10 18:38:45,582 - __main__ - INFO - Batch prediction: 2 houses predicted
+2026-05-10 18:38:45,583 - __main__ - INFO - API Tests: 4/4 passed
+2026-05-17 12:54:31,938 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-17 12:54:31,956 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-17 12:57:02,663 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-17 12:57:02,678 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-17 13:40:40,470 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-17 13:40:40,489 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-17 13:41:26,713 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-17 13:41:26,718 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0}
+2026-05-17 13:41:26,723 - src.data.validator - INFO - Validation: PASSED
+2026-05-17 13:41:26,730 - src.data.preprocessor - INFO - Removed outliers. Shape: (722, 9)
+2026-05-17 13:41:26,736 - src.data.preprocessor - INFO - Preprocessing complete: (722, 9)
+2026-05-17 13:41:26,749 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-17 13:41:26,753 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-17 13:41:26,755 - __main__ - INFO - Pipeline complete: train (577, 8), test (145, 8)
+2026-05-17 13:41:26,755 - __main__ - INFO - Data processing successful!
+2026-05-17 13:43:59,158 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 13:43:59,160 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 13:43:59,330 - src.models.trainer - INFO - Training R²: 0.9819
+2026-05-17 13:43:59,392 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 13:43:59,392 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 13:43:59,393 - __main__ - INFO - Model training successful!
+2026-05-17 13:51:30,211 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-17 13:51:30,235 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 13:51:30,236 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-17 13:51:30,284 - src.models.trainer - INFO - Test R²: 0.9082
+2026-05-17 13:51:30,284 - __main__ - INFO - Evaluation metrics: {'mse': 0.1128, 'rmse': 0.3358, 'mae': 0.2431, 'r2_score': 0.9082}
+2026-05-17 13:51:30,284 - __main__ - INFO - Model evaluation successful!
+2026-05-17 14:38:57,262 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 14:39:00,381 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 14:39:00,575 - src.models.trainer - INFO - Training R²: 0.9819
+2026-05-17 14:39:00,641 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 14:39:00,652 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 14:39:00,653 - __main__ - INFO - Model training successful!
+2026-05-17 14:43:19,793 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 14:43:20,587 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 14:43:20,752 - src.models.trainer - INFO - Training R²: 0.9819
+2026-05-17 14:43:20,788 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 14:43:20,791 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 14:43:20,791 - __main__ - INFO - Model training successful!
+2026-05-17 14:50:24,604 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-17 14:50:25,481 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 14:50:25,481 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-17 14:50:25,505 - src.models.trainer - INFO - Test R²: 0.9082
+2026-05-17 14:50:25,517 - __main__ - INFO - Evaluation metrics: {'mse': 0.1128, 'rmse': 0.3358, 'mae': 0.2431, 'r2_score': 0.9082}
+2026-05-17 14:50:25,517 - __main__ - INFO - Model evaluation successful!
+2026-05-17 14:59:03,156 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 14:59:03,951 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 14:59:04,155 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 14:59:04,229 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 14:59:04,233 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 14:59:04,235 - __main__ - INFO - Model training successful!
+2026-05-17 14:59:08,182 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-17 14:59:09,034 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 14:59:09,034 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-17 14:59:09,054 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-17 14:59:09,072 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-17 14:59:09,072 - __main__ - INFO - Model evaluation successful!
+2026-05-17 14:59:32,833 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 14:59:33,652 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 14:59:33,838 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 14:59:33,881 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 14:59:33,886 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 14:59:33,886 - __main__ - INFO - Model training successful!
+2026-05-17 14:59:37,685 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-17 14:59:38,567 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 14:59:38,568 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-17 14:59:38,607 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-17 14:59:38,639 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-17 14:59:38,640 - __main__ - INFO - Model evaluation successful!
+2026-05-17 15:01:07,257 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 15:01:08,062 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 15:01:08,249 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 15:01:08,292 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 15:01:08,296 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 15:01:08,296 - __main__ - INFO - Model training successful!
+2026-05-17 15:01:13,458 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-17 15:01:14,387 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 15:01:14,387 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-17 15:01:14,420 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-17 15:01:14,447 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-17 15:01:14,447 - __main__ - INFO - Model evaluation successful!
+2026-05-17 16:05:23,904 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 16:05:24,728 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 16:05:24,889 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 16:05:24,932 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 16:05:40,020 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 16:05:40,020 - __main__ - INFO - Model training successful!
+2026-05-17 16:29:12,862 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 16:29:13,604 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 16:29:13,779 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 16:29:13,816 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 16:29:20,568 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 16:29:20,568 - __main__ - INFO - Model training successful!
+2026-05-17 16:30:29,146 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-17 16:30:29,931 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-17 16:30:30,106 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-17 16:30:30,154 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-17 16:30:36,078 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-17 16:30:36,078 - __main__ - INFO - Model training successful!
+2026-05-17 16:49:51,250 - src.api.predict - ERROR - Failed to load model from MLflow Registry: Yaml file 'C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\mlruns\models\HousingPricePredictor\version-1\meta.yaml' does not exist.
+2026-05-17 16:49:51,251 - src.api.predict - ERROR - Ensure an MLflow tracking server is running and the model is registered.
+2026-05-17 16:49:51,273 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-17 16:49:51,273 - src.models.inference - INFO - Model loaded from models/artifacts/housing_model.pkl
+2026-05-17 16:49:51,273 - src.api.predict - WARNING - Falling back to local model artifact.
+2026-05-17 16:49:51,284 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-17 16:49:51,284 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-17 16:49:51,284 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-17 16:50:39,912 - __main__ - INFO - API health check passed
+2026-05-17 16:50:41,941 - __main__ - INFO - Model info retrieved: RandomForestRegressor
+2026-05-17 16:50:44,024 - src.data.preprocessor - INFO - Removed outliers. Shape: (1, 8)
+2026-05-17 16:50:44,034 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
+2026-05-17 16:50:44,053 - src.models.inference - INFO - Predictions: 1 samples
+2026-05-17 16:50:44,053 - src.api.predict - INFO - Prediction: 3.97
+2026-05-17 16:50:44,055 - __main__ - INFO - Single prediction: $3.97k
+2026-05-17 16:50:46,113 - src.data.preprocessor - INFO - Removed outliers. Shape: (2, 8)
+2026-05-17 16:50:46,116 - src.data.preprocessor - INFO - Preprocessing complete: (2, 8)
+2026-05-17 16:50:46,134 - src.models.inference - INFO - Predictions: 2 samples
+2026-05-17 16:50:46,135 - __main__ - INFO - Batch prediction: 2 houses predicted
+2026-05-17 16:50:46,136 - __main__ - INFO - API Tests: 4/4 passed
+2026-05-17 16:52:18,183 - src.data.preprocessor - INFO - Removed outliers. Shape: (1, 8)
+2026-05-17 16:52:18,185 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
+2026-05-17 16:52:18,204 - src.models.inference - INFO - Predictions: 1 samples
+2026-05-17 16:52:18,204 - src.api.predict - INFO - Prediction: 0.91
+2026-05-17 16:52:48,716 - src.data.preprocessor - INFO - Removed outliers. Shape: (1, 8)
+2026-05-17 16:52:48,721 - src.data.preprocessor - INFO - Preprocessing complete: (1, 8)
+2026-05-17 16:52:48,740 - src.models.inference - INFO - Predictions: 1 samples
+2026-05-17 16:52:48,740 - src.api.predict - INFO - Prediction: 0.91

@@ -1,0 +1,140 @@
+# Configuration file for the ML pipeline
+# WHY: Centralized config makes it easy to change parameters without modifying code
+# This enables experimenting with different settings and environments
+
+project:
+  name: "ml_model_serving"
+  version: "1.0.0"
+  description: "End-to-end MLOps project"
+
+# Data Configuration
+# WHY: Define data sources and paths in one place
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  features_data_path: "data/features"
+
+  # Data validation rules
+  validation:
+    min_samples: 100
+    required_columns: []  # Add your required columns
+
+  # Train/test split
+  split:
+    test_size: 0.2
+    random_state: 42
+    stratify: true
+
+# Feature Engineering
+# WHY: Version control your feature engineering logic
+features:
+  numerical_features: 
+    - "MedInc"         # Median income in block group
+    - "HouseAge"       # Median house age in block group
+    - "AveRooms"       # Average number of rooms
+    - "AveBedrms"      # Average number of bedrooms
+    - "Population"     # Block group population
+    - "AveOccup"       # Average occupancy
+    - "Latitude"       # Latitude coordinate
+    - "Longitude"      # Longitude coordinate
+  
+  categorical_features: []
+  target_column: "Price"  # Median house value
+
+  # Feature transformations
+  scaling: "standard"  # standard, minmax, robust
+  encoding: "onehot"   # onehot, label, target
+
+  # Preprocessing settings
+  outlier_removal: true
+  iqr_multiplier: 1.5
+
+# Model Configuration
+# WHY: Easily experiment with different models and hyperparameters
+model:
+  type: "random_forest"  # random_forest, xgboost, linear_regression
+
+  # Hyperparameters for housing price prediction
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10 # Changed for new experiment
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+    n_jobs: -1
+
+  # Model registry
+  registry:
+    experiment_name: "default_experiment"
+    run_name: "my_first_production_candidate"
+    model_name: "HousingPricePredictor" # Logical name for your model
+    model_stage: "Production"     # Stage to load (Staging, Production, etc.)
+# Training Configuration
+# WHY: Control training behavior consistently
+training:
+  cv_folds: 5
+  scoring_metric: "accuracy"  # accuracy, f1, roc_auc, rmse
+
+  # Early stopping (if applicable)
+  early_stopping:
+    enabled: false
+    patience: 10
+
+# Model Evaluation
+# WHY: Define success criteria for model promotion
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+
+  # Thresholds for promotion to production
+  promotion_criteria:
+    min_accuracy: 0.85
+    min_f1_score: 0.80
+
+# API Configuration
+# WHY: Configure serving infrastructure
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: false
+  log_level: "info"
+
+  # Model serving
+  model_path: "models/artifacts/production_model.pkl"
+
+  # Rate limiting (requests per minute)
+  rate_limit: 100
+
+# Monitoring Configuration
+# WHY: Track model performance in production
+monitoring:
+  # Metrics collection
+  prometheus:
+    enabled: true
+    port: 8001
+
+  # Logging
+  logging:
+    level: "INFO"
+    format: "json"
+    file: "logs/application.log"
+
+  # Data drift detection
+  drift_detection:
+    enabled: true
+    reference_data_path: "data/features/reference_data.csv"
+    threshold: 0.05
+
+# MLflow Configuration
+# WHY: Central experiment tracking
+mlflow:
+  tracking_uri: "file:./models/experiments"
+  artifact_location: "file:./models/artifacts"
+
+# Environment
+# WHY: Different settings for dev/staging/production
+environment: "development"  # development, staging, production

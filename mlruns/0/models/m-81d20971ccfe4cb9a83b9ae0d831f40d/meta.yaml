@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/32470/Desktop/HP laptop recent/Programming_Projects/GitHub_Repositories/ml_model_serving/mlruns/0/models/m-81d20971ccfe4cb9a83b9ae0d831f40d/artifacts
+creation_timestamp: 1779028153861
+experiment_id: '0'
+last_updated_timestamp: 1779028160539
+model_id: m-81d20971ccfe4cb9a83b9ae0d831f40d
+model_type: null
+name: model
+source_run_id: 22e2f67cd78d454db5c2d37ee404ab3a
+status: 2
+status_message: null

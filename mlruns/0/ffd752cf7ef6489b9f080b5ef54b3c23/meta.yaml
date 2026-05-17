@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/32470/Desktop/HP laptop recent/Programming_Projects/GitHub_Repositories/ml_model_serving/mlruns/0/ffd752cf7ef6489b9f080b5ef54b3c23/artifacts
+end_time: 1779022778633
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ffd752cf7ef6489b9f080b5ef54b3c23
+run_name: evaluation_run
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779022778444
+status: 3
+tags: []
+user_id: mari
