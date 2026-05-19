@@ -1,5 +1,3 @@
-"""REST API for housing prices prediction."""
-
 import joblib
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field

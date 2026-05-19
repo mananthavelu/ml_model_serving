@@ -8,8 +8,13 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project
-COPY . .
+# Copy source code and other necessary files
+COPY ./scripts /app/scripts
+COPY ./config /app/config
+COPY ./reports /app/reports
+
+# Make scripts executable
+RUN chmod +x /app/scripts/*
 
 # Set PYTHONPATH to include the project root for module imports
 ENV PYTHONPATH=/app

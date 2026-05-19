@@ -2394,3 +2394,382 @@ Data processing successful!
 2026-05-17 21:13:44,964 - src.data.preprocessor - INFO - Removed outliers. Shape: (2, 8)
 2026-05-17 21:13:44,966 - src.data.preprocessor - INFO - Preprocessing complete: (2, 8)
 2026-05-17 21:13:45,010 - src.models.inference - INFO - Predictions: 2 samples
+2026-05-20 00:22:22,552 - __main__ - INFO - ================================================================================
+2026-05-20 00:22:22,553 - __main__ - INFO - STARTING COMPLETE MLOPS PIPELINE
+2026-05-20 00:22:22,555 - __main__ - INFO - ================================================================================
+2026-05-20 00:22:22,555 - __main__ - INFO - Running: Generate sample housing dataset
+2026-05-20 00:22:22,555 - __main__ - INFO - Command: python -m scripts.generate_sample_data
+2026-05-20 00:22:29,374 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-20 00:22:29,463 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-20 00:22:29,629 - __main__ - INFO - Successfully completed: Generate sample housing dataset
+2026-05-20 00:22:29,671 - __main__ - INFO - Running: Process and validate data pipeline
+2026-05-20 00:22:29,671 - __main__ - INFO - Command: python -m scripts.process_data
+2026-05-20 00:22:49,847 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-20 00:22:49,867 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0}
+2026-05-20 00:22:49,874 - src.data.validator - INFO - Validation: PASSED
+2026-05-20 00:22:49,894 - src.data.preprocessor - INFO - Removed outliers. Shape: (722, 9)
+2026-05-20 00:22:49,904 - src.data.preprocessor - INFO - Preprocessing complete: (722, 9)
+2026-05-20 00:22:49,923 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-20 00:22:49,934 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-20 00:22:49,937 - __main__ - INFO - Pipeline complete: train (577, 8), test (145, 8)
+2026-05-20 00:22:49,937 - __main__ - INFO - Data processing successful!
+2026-05-20 00:22:50,256 - __main__ - INFO - Successfully completed: Process and validate data pipeline
+2026-05-20 00:22:50,258 - __main__ - INFO - Running: Train housing prices prediction model
+2026-05-20 00:22:50,259 - __main__ - INFO - Command: python -m scripts.train_model
+2026-05-20 00:23:06,120 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-20 00:23:10,172 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-20 00:23:10,606 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-20 00:23:10,681 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-20 00:23:38,807 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-20 00:23:38,808 - __main__ - INFO - Model training successful!
+2026-05-20 00:23:39,492 - __main__ - INFO - Successfully completed: Train housing prices prediction model
+2026-05-20 00:23:39,494 - __main__ - INFO - Running: Evaluate trained model on test data
+2026-05-20 00:23:39,495 - __main__ - INFO - Command: python -m scripts.evaluate_model
+2026-05-20 00:23:48,922 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-20 00:23:52,017 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-20 00:23:52,017 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-20 00:23:52,098 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-20 00:23:52,146 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-20 00:23:52,146 - __main__ - INFO - Model evaluation successful!
+2026-05-20 00:23:52,818 - __main__ - INFO - Successfully completed: Evaluate trained model on test data
+2026-05-20 00:23:52,822 - __main__ - INFO - Running: Generate reference data for monitoring
+2026-05-20 00:23:52,823 - __main__ - INFO - Command: python -m scripts.generate_reference_data
+2026-05-20 00:23:55,659 - __main__ - INFO - Successfully completed: Generate reference data for monitoring
+2026-05-20 00:23:55,662 - __main__ - INFO - Running: Run model monitoring and generate reports
+2026-05-20 00:23:55,662 - __main__ - INFO - Command: python -m scripts.monitor_model
+2026-05-20 00:24:12,510 - __main__ - ERROR - Error: Command 'python -m scripts.monitor_model' returned non-zero exit status 1.
+2026-05-20 00:24:12,510 - __main__ - ERROR - STDERR: C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\_internal\_fields.py:149: UserWarning: Field "model_name" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\scripts\monitor_model.py", line 15, in <module>
+    from evidently.report import Report
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\__init__.py", line 11, in <module>
+    from evidently import ui
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\__init__.py", line 30, in <module>
+    from evidently.ui import runner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\__init__.py", line 1, in <module>
+    from evidently.ui.runner.core import EvidentlyUIRunner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\core.py", line 16, in <module>
+    from evidently.ui.service.demo_projects import DemoProjectNamesForCliType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\__init__.py", line 5, in <module>
+    from .base import DemoProject
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\base.py", line 11, in <module>
+    from evidently.ui.workspace import Project
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\workspace.py", line 27, in <module>
+    from evidently.legacy.ui.api.models import OrgModel
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\api\models.py", line 22, in <module>
+    from evidently.legacy.ui.managers.auth import Role
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\managers\auth.py", line 16, in <module>
+    from evidently.legacy.ui.errors import NotEnoughPermissions
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\errors.py", line 3, in <module>
+    from litestar import Response
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\__init__.py", line 1, in <module>
+    from litestar.app import Litestar
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\app.py", line 21, in <module>
+    from litestar._asgi import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\__init__.py", line 1, in <module>
+    from litestar._asgi.asgi_router import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\asgi_router.py", line 9, in <module>
+    from litestar._asgi.routing_trie import validate_node
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\__init__.py", line 1, in <module>
+    from litestar._asgi.routing_trie.mapping import add_route_to_trie
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\mapping.py", line 12, in <module>
+    from litestar.types.internal_types import PathParameterDefinition
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\__init__.py", line 78, in <module>
+    from .internal_types import ControllerRouterHandler, ReservedKwargs, RouteHandlerMapItem, RouteHandlerType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\internal_types.py", line 5, in <module>
+    from litestar.utils.deprecation import warn_deprecation
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\__init__.py", line 24, in <module>
+    from .scope import (  # type: ignore[attr-defined]
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\scope\__init__.py", line 5, in <module>
+    from litestar.serialization import get_serializer
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\__init__.py", line 1, in <module>
+    from .msgspec_hooks import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\msgspec_hooks.py", line 22, in <module>
+    from litestar.datastructures.secret_values import SecretBytes, SecretString
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\__init__.py", line 2, in <module>
+    from litestar.datastructures.headers import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\headers.py", line 27, in <module>
+    from litestar._multipart import parse_content_header
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_multipart.py", line 7, in <module>
+    from multipart import (  # type: ignore[import-untyped]
+ImportError: cannot import name 'MultipartSegment' from 'multipart' (C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\multipart\__init__.py)
+
+2026-05-20 00:24:12,511 - __main__ - ERROR - Pipeline failed at step: Run model monitoring and generate reports
+2026-05-20 00:24:12,511 - __main__ - INFO - ================================================================================
+2026-05-20 00:24:12,514 - __main__ - INFO - ================================================================================
+2026-05-20 00:24:58,099 - __main__ - INFO - ================================================================================
+2026-05-20 00:24:58,099 - __main__ - INFO - STARTING COMPLETE MLOPS PIPELINE
+2026-05-20 00:24:58,099 - __main__ - INFO - ================================================================================
+2026-05-20 00:24:58,099 - __main__ - INFO - Running: Generate sample housing dataset
+2026-05-20 00:24:58,100 - __main__ - INFO - Command: python -m scripts.generate_sample_data
+2026-05-20 00:24:59,846 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-20 00:24:59,873 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-20 00:25:00,018 - __main__ - INFO - Successfully completed: Generate sample housing dataset
+2026-05-20 00:25:00,033 - __main__ - INFO - Running: Process and validate data pipeline
+2026-05-20 00:25:00,033 - __main__ - INFO - Command: python -m scripts.process_data
+2026-05-20 00:25:02,465 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-20 00:25:02,467 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0}
+2026-05-20 00:25:02,469 - src.data.validator - INFO - Validation: PASSED
+2026-05-20 00:25:02,480 - src.data.preprocessor - INFO - Removed outliers. Shape: (722, 9)
+2026-05-20 00:25:02,484 - src.data.preprocessor - INFO - Preprocessing complete: (722, 9)
+2026-05-20 00:25:02,500 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-20 00:25:02,507 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-20 00:25:02,511 - __main__ - INFO - Pipeline complete: train (577, 8), test (145, 8)
+2026-05-20 00:25:02,511 - __main__ - INFO - Data processing successful!
+2026-05-20 00:25:02,763 - __main__ - INFO - Successfully completed: Process and validate data pipeline
+2026-05-20 00:25:02,765 - __main__ - INFO - Running: Train housing prices prediction model
+2026-05-20 00:25:02,765 - __main__ - INFO - Command: python -m scripts.train_model
+2026-05-20 00:25:11,250 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-20 00:25:13,337 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-20 00:25:14,157 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-20 00:25:14,264 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-20 00:25:29,384 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-20 00:25:29,384 - __main__ - INFO - Model training successful!
+2026-05-20 00:25:29,908 - __main__ - INFO - Successfully completed: Train housing prices prediction model
+2026-05-20 00:25:29,910 - __main__ - INFO - Running: Evaluate trained model on test data
+2026-05-20 00:25:29,910 - __main__ - INFO - Command: python -m scripts.evaluate_model
+2026-05-20 00:25:36,532 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-20 00:25:38,550 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-20 00:25:38,550 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-20 00:25:38,587 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-20 00:25:38,611 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-20 00:25:38,611 - __main__ - INFO - Model evaluation successful!
+2026-05-20 00:25:39,107 - __main__ - INFO - Successfully completed: Evaluate trained model on test data
+2026-05-20 00:25:39,109 - __main__ - INFO - Running: Generate reference data for monitoring
+2026-05-20 00:25:39,109 - __main__ - INFO - Command: python -m scripts.generate_reference_data
+2026-05-20 00:25:41,741 - __main__ - INFO - Successfully completed: Generate reference data for monitoring
+2026-05-20 00:25:41,743 - __main__ - INFO - Running: Run model monitoring and generate reports
+2026-05-20 00:25:41,743 - __main__ - INFO - Command: python -m scripts.monitor_model
+2026-05-20 00:25:54,534 - __main__ - ERROR - Error: Command 'python -m scripts.monitor_model' returned non-zero exit status 1.
+2026-05-20 00:25:54,535 - __main__ - ERROR - STDERR: C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\_internal\_fields.py:149: UserWarning: Field "model_name" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\scripts\monitor_model.py", line 15, in <module>
+    from evidently.report import Report
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\__init__.py", line 11, in <module>
+    from evidently import ui
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\__init__.py", line 30, in <module>
+    from evidently.ui import runner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\__init__.py", line 1, in <module>
+    from evidently.ui.runner.core import EvidentlyUIRunner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\core.py", line 16, in <module>
+    from evidently.ui.service.demo_projects import DemoProjectNamesForCliType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\__init__.py", line 5, in <module>
+    from .base import DemoProject
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\base.py", line 11, in <module>
+    from evidently.ui.workspace import Project
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\workspace.py", line 27, in <module>
+    from evidently.legacy.ui.api.models import OrgModel
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\api\models.py", line 22, in <module>
+    from evidently.legacy.ui.managers.auth import Role
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\managers\auth.py", line 16, in <module>
+    from evidently.legacy.ui.errors import NotEnoughPermissions
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\errors.py", line 3, in <module>
+    from litestar import Response
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\__init__.py", line 1, in <module>
+    from litestar.app import Litestar
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\app.py", line 21, in <module>
+    from litestar._asgi import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\__init__.py", line 1, in <module>
+    from litestar._asgi.asgi_router import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\asgi_router.py", line 9, in <module>
+    from litestar._asgi.routing_trie import validate_node
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\__init__.py", line 1, in <module>
+    from litestar._asgi.routing_trie.mapping import add_route_to_trie
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\mapping.py", line 12, in <module>
+    from litestar.types.internal_types import PathParameterDefinition
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\__init__.py", line 78, in <module>
+    from .internal_types import ControllerRouterHandler, ReservedKwargs, RouteHandlerMapItem, RouteHandlerType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\internal_types.py", line 5, in <module>
+    from litestar.utils.deprecation import warn_deprecation
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\__init__.py", line 24, in <module>
+    from .scope import (  # type: ignore[attr-defined]
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\scope\__init__.py", line 5, in <module>
+    from litestar.serialization import get_serializer
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\__init__.py", line 1, in <module>
+    from .msgspec_hooks import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\msgspec_hooks.py", line 22, in <module>
+    from litestar.datastructures.secret_values import SecretBytes, SecretString
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\__init__.py", line 2, in <module>
+    from litestar.datastructures.headers import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\headers.py", line 27, in <module>
+    from litestar._multipart import parse_content_header
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_multipart.py", line 7, in <module>
+    from multipart import (  # type: ignore[import-untyped]
+ImportError: cannot import name 'MultipartSegment' from 'multipart' (C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\multipart\__init__.py)
+
+2026-05-20 00:25:54,535 - __main__ - ERROR - Pipeline failed at step: Run model monitoring and generate reports
+2026-05-20 00:25:54,536 - __main__ - INFO - ================================================================================
+2026-05-20 00:25:54,537 - __main__ - INFO - ================================================================================
+2026-05-20 00:28:00,891 - __main__ - INFO - ================================================================================
+2026-05-20 00:28:00,891 - __main__ - INFO - STARTING COMPLETE MLOPS PIPELINE
+2026-05-20 00:28:00,891 - __main__ - INFO - ================================================================================
+2026-05-20 00:28:00,891 - __main__ - INFO - Running: Generate sample housing dataset
+2026-05-20 00:28:00,891 - __main__ - INFO - Command: python -m scripts.generate_sample_data
+2026-05-20 00:28:01,976 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-20 00:28:01,998 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-20 00:28:02,100 - __main__ - INFO - Successfully completed: Generate sample housing dataset
+2026-05-20 00:28:02,109 - __main__ - INFO - Running: Process and validate data pipeline
+2026-05-20 00:28:02,109 - __main__ - INFO - Command: python -m scripts.process_data
+2026-05-20 00:28:05,258 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-20 00:28:05,261 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0}
+2026-05-20 00:28:05,264 - src.data.validator - INFO - Validation: PASSED
+2026-05-20 00:28:05,277 - src.data.preprocessor - INFO - Removed outliers. Shape: (722, 9)
+2026-05-20 00:28:05,283 - src.data.preprocessor - INFO - Preprocessing complete: (722, 9)
+2026-05-20 00:28:05,298 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-20 00:28:05,304 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-20 00:28:05,306 - __main__ - INFO - Pipeline complete: train (577, 8), test (145, 8)
+2026-05-20 00:28:05,306 - __main__ - INFO - Data processing successful!
+2026-05-20 00:28:05,514 - __main__ - INFO - Successfully completed: Process and validate data pipeline
+2026-05-20 00:28:05,515 - __main__ - INFO - Running: Train housing prices prediction model
+2026-05-20 00:28:05,515 - __main__ - INFO - Command: python -m scripts.train_model
+2026-05-20 00:28:10,276 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-20 00:28:11,615 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-20 00:28:11,825 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-20 00:28:11,881 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-20 00:28:19,884 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-20 00:28:19,885 - __main__ - INFO - Model training successful!
+2026-05-20 00:28:20,454 - __main__ - INFO - Successfully completed: Train housing prices prediction model
+2026-05-20 00:28:20,457 - __main__ - INFO - Running: Evaluate trained model on test data
+2026-05-20 00:28:20,458 - __main__ - INFO - Command: python -m scripts.evaluate_model
+2026-05-20 00:28:25,688 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-20 00:28:27,190 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-20 00:28:27,190 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-20 00:28:27,230 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-20 00:28:27,252 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-20 00:28:27,252 - __main__ - INFO - Model evaluation successful!
+2026-05-20 00:28:27,792 - __main__ - INFO - Successfully completed: Evaluate trained model on test data
+2026-05-20 00:28:27,794 - __main__ - INFO - Running: Generate reference data for monitoring
+2026-05-20 00:28:27,796 - __main__ - INFO - Command: python -m scripts.generate_reference_data
+2026-05-20 00:28:30,430 - __main__ - INFO - Successfully completed: Generate reference data for monitoring
+2026-05-20 00:28:30,432 - __main__ - INFO - Running: Run model monitoring and generate reports
+2026-05-20 00:28:30,432 - __main__ - INFO - Command: python -m scripts.monitor_model
+2026-05-20 00:28:40,857 - __main__ - ERROR - Error: Command 'python -m scripts.monitor_model' returned non-zero exit status 1.
+2026-05-20 00:28:40,858 - __main__ - ERROR - STDERR: C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\pydantic\_internal\_fields.py:149: UserWarning: Field "model_name" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\scripts\monitor_model.py", line 15, in <module>
+    from evidently.report import Report
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\__init__.py", line 11, in <module>
+    from evidently import ui
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\__init__.py", line 30, in <module>
+    from evidently.ui import runner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\__init__.py", line 1, in <module>
+    from evidently.ui.runner.core import EvidentlyUIRunner
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\runner\core.py", line 16, in <module>
+    from evidently.ui.service.demo_projects import DemoProjectNamesForCliType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\__init__.py", line 5, in <module>
+    from .base import DemoProject
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\service\demo_projects\base.py", line 11, in <module>
+    from evidently.ui.workspace import Project
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\ui\workspace.py", line 27, in <module>
+    from evidently.legacy.ui.api.models import OrgModel
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\api\models.py", line 22, in <module>
+    from evidently.legacy.ui.managers.auth import Role
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\managers\auth.py", line 16, in <module>
+    from evidently.legacy.ui.errors import NotEnoughPermissions
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\evidently\legacy\ui\errors.py", line 3, in <module>
+    from litestar import Response
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\__init__.py", line 1, in <module>
+    from litestar.app import Litestar
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\app.py", line 21, in <module>
+    from litestar._asgi import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\__init__.py", line 1, in <module>
+    from litestar._asgi.asgi_router import ASGIRouter
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\asgi_router.py", line 9, in <module>
+    from litestar._asgi.routing_trie import validate_node
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\__init__.py", line 1, in <module>
+    from litestar._asgi.routing_trie.mapping import add_route_to_trie
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_asgi\routing_trie\mapping.py", line 12, in <module>
+    from litestar.types.internal_types import PathParameterDefinition
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\__init__.py", line 78, in <module>
+    from .internal_types import ControllerRouterHandler, ReservedKwargs, RouteHandlerMapItem, RouteHandlerType
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\types\internal_types.py", line 5, in <module>
+    from litestar.utils.deprecation import warn_deprecation
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\__init__.py", line 24, in <module>
+    from .scope import (  # type: ignore[attr-defined]
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\utils\scope\__init__.py", line 5, in <module>
+    from litestar.serialization import get_serializer
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\__init__.py", line 1, in <module>
+    from .msgspec_hooks import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\serialization\msgspec_hooks.py", line 22, in <module>
+    from litestar.datastructures.secret_values import SecretBytes, SecretString
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\__init__.py", line 2, in <module>
+    from litestar.datastructures.headers import (
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\datastructures\headers.py", line 27, in <module>
+    from litestar._multipart import parse_content_header
+  File "C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\litestar\_multipart.py", line 7, in <module>
+    from multipart import (  # type: ignore[import-untyped]
+ImportError: cannot import name 'MultipartSegment' from 'multipart' (C:\Users\32470\AppData\Local\Programs\Python\Python312\Lib\site-packages\multipart\__init__.py)
+
+2026-05-20 00:28:40,858 - __main__ - ERROR - Pipeline failed at step: Run model monitoring and generate reports
+2026-05-20 00:28:40,858 - __main__ - INFO - ================================================================================
+2026-05-20 00:28:40,859 - __main__ - INFO - ================================================================================
+2026-05-20 00:31:00,463 - __main__ - INFO - ================================================================================
+2026-05-20 00:31:00,463 - __main__ - INFO - STARTING COMPLETE MLOPS PIPELINE
+2026-05-20 00:31:00,464 - __main__ - INFO - ================================================================================
+2026-05-20 00:31:00,464 - __main__ - INFO - Running: Generate sample housing dataset
+2026-05-20 00:31:00,465 - __main__ - INFO - Command: python -m scripts.generate_sample_data
+2026-05-20 00:31:01,623 - __main__ - INFO - Generated 1000 samples. Price range: $0.50k - $5.00k
+2026-05-20 00:31:01,646 - __main__ - INFO - Saved to data/raw/housing.csv
+2026-05-20 00:31:01,742 - __main__ - INFO - Successfully completed: Generate sample housing dataset
+2026-05-20 00:31:01,748 - __main__ - INFO - Running: Process and validate data pipeline
+2026-05-20 00:31:01,748 - __main__ - INFO - Command: python -m scripts.process_data
+2026-05-20 00:31:03,751 - src.data.loader - INFO - Loaded housing data from data/raw/housing.csv. Shape: (1000, 9)
+2026-05-20 00:31:03,757 - src.data.loader - INFO - Data Quality Report: {'total_rows': 1000, 'total_columns': 9, 'missing_values': {'MedInc': 0, 'HouseAge': 0, 'AveRooms': 0, 'AveBedrms': 0, 'Population': 0, 'AveOccup': 0, 'Latitude': 0, 'Longitude': 0, 'Price': 0}, 'duplicate_rows': 0}
+2026-05-20 00:31:03,760 - src.data.validator - INFO - Validation: PASSED
+2026-05-20 00:31:03,773 - src.data.preprocessor - INFO - Removed outliers. Shape: (722, 9)
+2026-05-20 00:31:03,778 - src.data.preprocessor - INFO - Preprocessing complete: (722, 9)
+2026-05-20 00:31:03,799 - src.data.loader - INFO - Saved processed data to data/processed/train.csv
+2026-05-20 00:31:03,810 - src.data.loader - INFO - Saved processed data to data/processed/test.csv
+2026-05-20 00:31:03,812 - __main__ - INFO - Pipeline complete: train (577, 8), test (145, 8)
+2026-05-20 00:31:03,813 - __main__ - INFO - Data processing successful!
+2026-05-20 00:31:04,095 - __main__ - INFO - Successfully completed: Process and validate data pipeline
+2026-05-20 00:31:04,098 - __main__ - INFO - Running: Train housing prices prediction model
+2026-05-20 00:31:04,098 - __main__ - INFO - Command: python -m scripts.train_model
+2026-05-20 00:31:09,321 - src.data.loader - INFO - Loaded housing data from data/processed/train.csv. Shape: (577, 9)
+2026-05-20 00:31:11,042 - src.models.trainer - INFO - Training random_forest on (577, 8)
+2026-05-20 00:31:11,339 - src.models.trainer - INFO - Training R²: 0.9812
+2026-05-20 00:31:11,403 - src.models.trainer - INFO - Model saved to: models/artifacts/housing_model.pkl
+2026-05-20 00:31:20,980 - __main__ - INFO - Model saved to models/artifacts/housing_model.pkl
+2026-05-20 00:31:20,981 - __main__ - INFO - Model training successful!
+2026-05-20 00:31:21,676 - __main__ - INFO - Successfully completed: Train housing prices prediction model
+2026-05-20 00:31:21,677 - __main__ - INFO - Running: Evaluate trained model on test data
+2026-05-20 00:31:21,678 - __main__ - INFO - Command: python -m scripts.evaluate_model
+2026-05-20 00:31:29,534 - src.data.loader - INFO - Loaded housing data from data/processed/test.csv. Shape: (145, 9)
+2026-05-20 00:31:31,498 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-20 00:31:31,498 - src.models.trainer - INFO - Evaluating on (145, 8)
+2026-05-20 00:31:31,533 - src.models.trainer - INFO - Test R²: 0.9083
+2026-05-20 00:31:31,554 - __main__ - INFO - Evaluation metrics: {'mse': 0.1126, 'rmse': 0.3356, 'mae': 0.2428, 'r2_score': 0.9083}
+2026-05-20 00:31:31,554 - __main__ - INFO - Model evaluation successful!
+2026-05-20 00:31:32,068 - __main__ - INFO - Successfully completed: Evaluate trained model on test data
+2026-05-20 00:31:32,071 - __main__ - INFO - Running: Generate reference data for monitoring
+2026-05-20 00:31:32,071 - __main__ - INFO - Command: python -m scripts.generate_reference_data
+2026-05-20 00:31:34,785 - __main__ - INFO - Successfully completed: Generate reference data for monitoring
+2026-05-20 00:31:34,786 - __main__ - INFO - Running: Test API server startup
+2026-05-20 00:31:34,786 - __main__ - INFO - Command: timeout 10 python -m scripts.serve_api || echo 'API startup test completed'
+2026-05-20 00:31:34,936 - __main__ - INFO - Successfully completed: Test API server startup
+2026-05-20 00:31:34,938 - __main__ - INFO - ================================================================================
+2026-05-20 00:31:34,940 - __main__ - INFO - Ready for production deployment
+2026-05-20 00:31:34,941 - __main__ - INFO - ================================================================================
+2026-05-20 00:33:43,153 - __main__ - INFO - Starting Housing Prices Prediction API server...
+2026-05-20 00:33:43,154 - __main__ - INFO - API will be available at: http://localhost:8000
+2026-05-20 00:33:43,154 - __main__ - INFO - Documentation at: http://localhost:8000/docs
+2026-05-20 00:33:49,532 - src.api.predict - ERROR - Failed to load model from MLflow Registry: Yaml file 'C:\Users\32470\Desktop\HP laptop recent\Programming_Projects\GitHub_Repositories\ml_model_serving\mlruns\models\HousingPricePredictor\version-1\meta.yaml' does not exist.
+2026-05-20 00:33:49,533 - src.api.predict - ERROR - Ensure an MLflow tracking server is running and the model is registered.
+2026-05-20 00:33:49,556 - src.models.trainer - INFO - Model loaded from: models/artifacts/housing_model.pkl
+2026-05-20 00:33:49,556 - src.models.inference - INFO - Model loaded from models/artifacts/housing_model.pkl
+2026-05-20 00:33:49,556 - src.api.predict - WARNING - Falling back to local model artifact.
